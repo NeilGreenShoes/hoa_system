@@ -1,0 +1,3 @@
+<div>
+    {{ Breadcrumbs::render() }}
+</div>

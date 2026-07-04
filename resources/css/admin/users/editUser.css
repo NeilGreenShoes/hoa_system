@@ -1,0 +1,45 @@
+.container-user{
+    display:flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding:1rem;
+    margin:0;
+    gap:1rem;
+    background: white;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-bottom: .5rem;
+}
+
+.form-group input, select{
+    font-size:1rem;
+    padding:.5rem;
+    border-radius: .5rem;
+}
+
+.form-button{
+    display:flex;
+    flex-direction: row;
+    gap:.5rem;
+}
+
+.submit-btn, .cancel-btn{
+    display:flex;
+    padding:.5rem;
+    border-radius:.5rem;
+    border:none;
+}
+
+.border-error{
+    border:solid 1px red;
+    color:red;
+}
+.boorder-success{
+    border:solid 1px green;
+    color:green;
+}
