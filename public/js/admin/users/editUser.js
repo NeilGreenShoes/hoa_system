@@ -1,4 +1,4 @@
-import '../../../css/admin/users/editUser.css';
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.getElementById('password');

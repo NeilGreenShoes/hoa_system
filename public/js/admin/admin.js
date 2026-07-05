@@ -1,6 +1,3 @@
-import '../../css/global.css';   
-import '../../css/admin/sidebar.css';  
-import '../../css/admin/admin.css'; 
 
 document.addEventListener('DOMContentLoaded', () => {
     const toast = document.querySelector('.message-container');

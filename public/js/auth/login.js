@@ -1,6 +1,3 @@
-import '../../css/login.css';
-import '../../css/global.css';
-
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     const submitBtn = document.querySelector('.submit-btn');
