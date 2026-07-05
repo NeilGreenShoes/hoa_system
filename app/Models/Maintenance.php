@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Maintenance extends Model
+{
+    protected $table = 'maintenance_requests';
+    protected $primaryKey = 'maintenanceID';
+    protected $keyType = 'int';
+    public $incrementing = true;
+    public $timestamps = true;
+
+    protected $fillable = [
+        'title',
+        'category',
+        'description',
+        'attachedFile',
+        'requestDate',
+        'status',
+        'membershipID', 
+        'staffID',
+    ];
+
+    public function membership()
+    {
+        return $this->belongsTo(Membership::class, 'membershipID', 'membershipID');
+    }
+
+    public function staff()
+    {
+        return $this->belongsTo(Staff::class, 'staffID', 'staffID');
+    }
+}

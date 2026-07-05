@@ -1,4 +1,4 @@
-import '../../../css/admin/users/editUser.css';
+import '../../../css/admin/users/createUser.css';
 
 document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.getElementById('password');
@@ -89,10 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const citySelect = document.getElementById('city');
     const barangaySelect = document.getElementById('barangay');
 
-    const oldProvince = document.getElementById('oldProvince')?.value || '';
-    const oldCity = document.getElementById('oldCity')?.value || '';
-    const oldBarangay = document.getElementById('oldBarangay')?.value || '';
-
     if (provinceSelect && citySelect && barangaySelect) {
         provinceSelect.innerHTML = '<option value="">Select Province</option>';
 
@@ -100,10 +96,15 @@ document.addEventListener('DOMContentLoaded', () => {
             provinceSelect.add(new Option(province, province));
         });
 
-        function loadCities(province, selectedCity = '') {
+        citySelect.disabled = true;
+        barangaySelect.disabled = true;
+
+        provinceSelect.addEventListener('change', () => {
             citySelect.innerHTML = '<option value="">Select City / Municipality</option>';
             barangaySelect.innerHTML = '<option value="">Select City First</option>';
             barangaySelect.disabled = true;
+
+            const province = provinceSelect.value;
 
             if (!province) {
                 citySelect.disabled = true;
@@ -115,43 +116,24 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             citySelect.disabled = false;
+        });
 
-            if (selectedCity) {
-                citySelect.value = selectedCity;
-                loadBarangays(province, selectedCity, oldBarangay);
-            }
-        }
-
-        function loadBarangays(province, city, selectedBarangay = '') {
+        citySelect.addEventListener('change', () => {
             barangaySelect.innerHTML = '<option value="">Select Barangay</option>';
+
+            const province = provinceSelect.value;
+            const city = citySelect.value;
 
             if (!province || !city) {
                 barangaySelect.disabled = true;
                 return;
             }
 
-            regionsData[province][city].forEach((barangay) => {
+            regionsData[province][city].sort().forEach((barangay) => {
                 barangaySelect.add(new Option(barangay, barangay));
             });
 
             barangaySelect.disabled = false;
-
-            if (selectedBarangay) {
-                barangaySelect.value = selectedBarangay;
-            }
-        }
-
-        provinceSelect.addEventListener('change', () => {
-            loadCities(provinceSelect.value);
         });
-
-        citySelect.addEventListener('change', () => {
-            loadBarangays(provinceSelect.value, citySelect.value);
-        });
-
-        if (oldProvince) {
-            provinceSelect.value = oldProvince;
-            loadCities(oldProvince, oldCity);
-        }
     }
 });

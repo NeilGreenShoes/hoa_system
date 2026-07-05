@@ -25,6 +25,13 @@
     .breadcrumb-item a {
         color: inherit;
         text-decoration: none;
+        transition: all .2s ease;
+        cursor: pointer;
+    }
+
+    .breadcrumb-item:hover {
+        font-weight: bold;
+        color: #007bff;
     }
 
     .breadcrumb-item + .breadcrumb-item::before {

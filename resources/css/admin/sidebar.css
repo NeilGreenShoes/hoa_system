@@ -1,8 +1,15 @@
 .sidebar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 250px;
+    height: 100vh;
     background: linear-gradient(to bottom, #0F2E7A, #1A5FFF);
-    color:white;
+    color: white;
     padding: 1rem;
+    box-sizing: border-box;
+    overflow-y: none; 
+    z-index: 100;
 }
 
 .sidebar-wrapper {

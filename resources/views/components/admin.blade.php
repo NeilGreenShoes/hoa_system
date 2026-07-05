@@ -7,7 +7,7 @@
     <title>HOA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Limelight&family=Space+Grotesk&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Limelight&&family=Montserrat&family=Space+Grotesk&display=swap" rel="stylesheet">
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     @vite('resources/js/admin/admin.js')
@@ -20,8 +20,8 @@
             <table class="sidebar-wrapper">
                 <thead>
                     <tr>
-                        <td> <img src="{{ asset('static/images/logo.png') }}" alt="image logo" class="sidebar-logo"></td>
-                        <td> {{ 'CONFIG.APP NAME'}} </td>
+                        <td> <img src="{{ asset('storage/' . ($appConfig ? $appConfig->app_logo : 'default-logo.png')) }}" alt="image logo" class="sidebar-logo"></td>
+                        <td> {{ $appConfig ? $appConfig->app_name : 'Default App Name' }} </td>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,35 +31,43 @@
                     </tr>
                     <tr>
                         <td><i class="fa-solid fa-users"></i></td>
-                        <td><a href="{{ route('showUsers') }}">Users</a></td>
+                        <td><a href="{{ route('showUsers') }}">Users Management</a></td>
                     </tr>
                     <tr>
-                        <td><i class="fa-solid fa-calendar-days"></i></td>
-                        {{-- <td><a href="{{ route('manager.user-list')}}">Users</a></td> --}}
+                        <td><i class="fa-solid fa-house"></i></td>
+                        <td><a href="#">Homeowners</a></td>
                     </tr>
                     <tr>
-                        <td><i class="fa-solid fa-bed"></i></td>
-                        <td><a href="#">Rooms</a></td>
+                        <td><i class="fa-solid fa-arrow-right-arrow-left"></i></td>
+                        <td><a href="#">Ownership Transfer</a></td>
                     </tr>
                     <tr>
-                        <td><i class="fa-solid fa-bed"></i></td>
-                        <td><a href="#">Amenities</a></td>
+                        <td><i class="fa-solid fa-clipboard"></i></td>
+                        <td><a href="#">Complaints</a></td>
                     </tr>
                     <tr>
-                        <td><i class="fa-solid fa-bed"></i></td>
-                        <td><a href="#">Food</a></td>
+                        <td><i class="fa-solid fa-wrench"></i></td>
+                        <td><a href="#">Maintenance</a></td>
                     </tr>
                     <tr>
-                        <td><i class="fa-solid fa-bed"></i></td>
-                        <td><a href="#">Facilities</a></td>
+                        <td><i class="fa-solid fa-droplet"></i></td>
+                        <td><a href="#">Water Monitoring</a></td>
                     </tr>
                     <tr>
-                        <td><i class="fa-solid fa-bed"></i></td>
-                        <td><a href="#">Rooms</a></td>
+                        <td><i class="fa-solid fa-credit-card"></i></td>
+                        <td><a href="#">Billing</a></td>
                     </tr>
                     <tr>
-                        <td><i class="fa-solid fa-bed"></i></td>
-                        <td><a href="#">Rooms</a></td>
+                        <td><i class="fa-solid fa-bullhorn"></i></td>
+                        <td><a href="#">Announcements</a></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa-solid fa-chart-bar"></i></td>
+                        <td><a href="#">Reports</a></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa-solid fa-gear"></i></td>
+                        <td><a href="{{ route('admin.app_config.index') }}">App Configuration</a></td>
                     </tr>
 
                 </tbody>

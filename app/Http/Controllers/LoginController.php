@@ -50,15 +50,9 @@ class LoginController extends Controller
                 $user->isLoggedIn = 1;
                 $user->save();
 
-                // Log the entry only on an absolute successful login event
                 $this->storeUserLog($user->userID, $request);
 
-                return response()->json([
-                    'status' => 'success',
-                    'redirect' => true,
-                    'url' => url('admin/dashboard'), 
-                    'message' => 'Device recognized. Logging in...'
-                ]);
+                return redirect('admin/dashboard')->with('success', 'Login successful.');
             }
 
             $otp = (string) random_int(100000, 999999);
@@ -70,8 +64,6 @@ class LoginController extends Controller
             ]);
 
             Mail::to($user->loginEmail)->send(new SendOtpMail($otp));
-
-            // CRITICAL FIX: Removed UserLog::create from here. It will not write a row to the database yet.
 
             return response()->json([
                 'status' => 'success',
@@ -120,15 +112,13 @@ class LoginController extends Controller
         session()->forget(['otp_code', 'otp_user_id', 'otp_expires_at']);
 
         Auth::loginUsingId($userId);
-        
-        // Update user state variables on successful OTP step
+
         $user = User::find($userId);
         if ($user) {
             $user->isLoggedIn = 1;
             $user->save();
         }
 
-        // CRITICAL FIX: The new log profile is written here, authorizing future bypasses
         $this->storeUserLog($userId, $request);
 
         $request->session()->regenerate();
@@ -216,10 +206,7 @@ class LoginController extends Controller
             'message' => 'Your password has been updated successfully!'
         ], 200);
     }
-
-    /**
-     * Private reusable helper method to save authentic log data rows cleanly.
-     */
+    
     private function storeUserLog($userId, Request $request)
     {
         $agentParser = new Agent();

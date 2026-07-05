@@ -32,25 +32,51 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 body: formData,
                 headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json' 
                 }
             });
 
-            const result = await response.json();
+            if (response.redirected) {
+                window.location.href = response.url;
+                return;
+            }
 
-            if (response.ok && result.status === 'success') {
-                if (result.redirect) {
-                    window.location.href = '/admin/dashboard'; 
+            const responseText = await response.text();
+            let result;
+            
+            try {
+                result = JSON.parse(responseText);
+            } catch (jsonError) {
+                console.error('Server returned non-JSON content:', responseText);
+                alert('An unexpected server error occurred.');
+                return;
+            }
+
+            if (response.ok) {
+                if (result.status === 'success' || result.success) {
+                    if (result.redirect) {
+                        window.location.href = typeof result.redirect === 'string' ? result.redirect : '/admin/dashboard'; 
+                    } else {
+                        showOtpModal();
+                    }
                 } else {
-                    showOtpModal();
+                    alert(result.message || 'Action failed.');
                 }
             } else {
-                alert(result.message || 'Login failed.');
+                if (response.status === 422 && result.errors) {
+                    const firstError = Object.values(result.errors)[0][0];
+                    alert(firstError);
+                } else {
+                    alert(result.message || 'Login failed.');
+                }
             }
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Network or Execution Error:', error);
+            alert('Could not connect to the server.');
         }
     });
+
 
     function showOtpModal() {
         const csrfElement = document.querySelector('input[name="_token"]');

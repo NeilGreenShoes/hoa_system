@@ -43,8 +43,14 @@ Breadcrumbs::for('editUser', function (BreadcrumbTrail $trail) {
     $trail->push('Edit', route('editUser', ['id' => $userID]));
 });
 
-// // Home > Staff
-// Breadcrumbs::for('manager.staff-list', function (BreadcrumbTrail $trail) {
-//     $trail->parent('manager.dashboard');
-//     $trail->push('Staff', route('manager.staff-list'));
-// });
+// Home > App Configuration
+Breadcrumbs::for('admin.app_config.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Config', route('admin.app_config.index'));
+});
+
+// Home > App Configuration > Edit
+Breadcrumbs::for('admin.app_config.edit', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.app_config.index');
+    $trail->push('Edit', route('admin.app_config.edit'));
+});

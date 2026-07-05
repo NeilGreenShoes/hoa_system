@@ -1,14 +1,13 @@
 .container-user {
     display: flex;
     flex-direction: column;
+    height: 100%;
     width: 100%;
-    min-height: 100%;
     padding: 1rem;
     margin: 0;
     gap: 1rem;
     background: white;
     box-sizing: border-box;
-    align-items: stretch;
 }
 
 .form-group {

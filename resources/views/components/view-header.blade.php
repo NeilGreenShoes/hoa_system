@@ -1,6 +1,6 @@
 <nav class="view-header">
     <div>
-        {{ $title ?? 'N/A'}}
+        <h2><strong>{{ $title ?? 'N/A'}}</strong></h2>
         @include('partials.breadcrumb')
     </div>
     {{ $slot }}

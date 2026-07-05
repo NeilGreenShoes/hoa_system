@@ -3,29 +3,30 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
-use App\Models\Address;
 
-class Staff extends Model
+class Homeowners extends Model
 {
-    protected $table = 'staffs';
-    protected $primaryKey = 'staffID';
-    protected $keyType = 'int';
+    protected $table = "homeowners";
+    protected $primaryKey = "homeownerID";
+    protected $keyType = "int";
     public $incrementing = true;
-    public $timestamps = true;
+    public $timestamps = false;
 
     protected $fillable = [
-        'lastName',
-        'firstName', 
+        'firstName',
         'middleName',
+        'lastName',
         'dateOfBirth',
         'gender',
+        'religion',
         'maritalStatus',
         'contactNumber',
         'email',
         'profileImage',
         'userID',
         'addressID',
+        'created_at',
+        'updated_at',
     ];
 
     public function user()
@@ -38,8 +39,4 @@ class Staff extends Model
         return $this->belongsTo(Address::class, 'addressID', 'addressID');
     }
 
-    public function fullName()
-    {
-        return $this->lastName . ', ' . $this->firstName . ' ' . $this->middleName;
-    }
 }

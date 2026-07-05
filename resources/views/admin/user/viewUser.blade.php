@@ -15,4 +15,21 @@
         <p><strong>Created At:</strong> {{ $user->created_at }}</p>
         <p><strong>Updated At:</strong> {{ $user->updated_at }}</p>
     </div>
+    
+    @if (session('message') || $errors->any())
+        <x-message class="{{ $errors->any() ? 'message-error' : '' }}">
+            @if (session('message'))
+                <strong><p style="margin: 0;">{{ session('message') }}</p></strong>
+            @endif
+
+            @if ($errors->any())
+                <strong>Please fix the following:</strong>
+                <ul style="margin: 0.25rem 0 0 0; padding-left: 1.25rem; font-size: 0.9rem;">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
+        </x-message>
+    @endif
 </x-admin>

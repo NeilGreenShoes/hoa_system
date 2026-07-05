@@ -1,0 +1,94 @@
+.container-dashboard{
+    width:100%;
+}
+
+hr {
+    border: 0; 
+    height: 1px; 
+    background: #e0e0e0; 
+    margin: 25px 0;
+}
+
+.container-metrics {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 20px; 
+    margin-bottom: 30px;
+}
+
+.metric-card {
+    background: #fff; 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+    border-left: 4px solid #3490dc;
+}
+
+.metric-card span {
+    font-size: 0.9rem; 
+    color: #6c757d; 
+    font-weight: bold; 
+    text-transform: uppercase;
+}
+
+.metric-card h2{
+    margin: 10px 0 0 0; 
+    font-size: 2rem; 
+    color: #2d3748;
+}
+
+.container-complaints {
+    margin-bottom: 25px;
+}
+
+.container-complaints div{
+    background: #fff; 
+    padding: 15px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.table-complaints {
+    width: 100%; 
+    border-collapse: collapse; 
+    text-align: left;
+}
+
+.table-complaints tr{
+    border-bottom: 2px solid #edf2f7; 
+    color: #4a5568;
+}
+
+.table-complaints th, td{
+    padding: 10px;
+}
+.homeowner-name span{
+    color: #a0aec0; 
+    font-style: italic;
+}
+.complaint-status span{
+    padding: 4px 8px; 
+    border-radius: 4px; 
+    font-size: 0.85rem; 
+    font-weight: bold; 
+    background: #fff3cd; 
+    color: #856404;
+}
+
+.complaint-date{
+    padding: 10px;
+    color: #718096;
+}
+
+.no-complaints td{
+    padding: 15px; 
+    text-align: center; 
+    color: #a0aec0;
+}
+
+.chart-container {
+    background: #fff; 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
