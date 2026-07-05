@@ -1,4 +1,4 @@
-@vite('resources/js/admin/users/showUsers.js')
+<script src="{{ asset('js/admin/users/showUsers.js')}}"></script>
 <x-admin>
     <x-view-header title="Users">
         <div class="header-buttons">

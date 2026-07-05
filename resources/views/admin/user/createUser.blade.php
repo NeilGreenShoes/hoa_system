@@ -1,5 +1,5 @@
-@vite('resources/js/admin/users/user.js')
-@vite('resources/js/admin/users/createUser.js')
+<script src="{{ asset('js/admin/users/user.js') }}"></script>
+<script src="{{ asset('js/admin/users/createUser.js') }}"></script>
 <x-admin>
     <x-view-header title="Create User">
         <div class="header-buttons">

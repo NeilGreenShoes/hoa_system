@@ -1,26 +1,7 @@
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
+    RewriteEngine On
 
-    RewriteEngine on
-
-    RewriteCond %{HTTP_HOST} ^https://plum-gaur-397209.hostingersite.com/$ [NC,OR]
-    RewriteCond %{HTTP_HOST} ^www.plum-gaur-397209.hostingersite.com/$
-    RewriteCond %{REQUEST_URI} !public/
-    RewriteRule (.*) /public/$1 [L]
-
-    # Handle X-XSRF-Token Header
-    RewriteCond %{HTTP:x-xsrf-token} .
-    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
-
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
-
-    # Send Requests To Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^ index.php [L]
 </IfModule>

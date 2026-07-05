@@ -1,4 +1,4 @@
-@vite('resources/js/admin/dashboard.js')
+<script src="{{('js/admin/dashboard.js')}}"></script>
 <x-admin>
     <x-view-header title="Dashboard">
         

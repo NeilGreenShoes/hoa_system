@@ -1,5 +1,5 @@
-@vite('resources/js/admin/users/user.js')
-@vite('resources/js/admin/users/editUser.js')
+<scirpt src="{{ asset('js/admin/users/user.js')}}"></scirpt>
+<script src="{{ asset('js/admin/users/editUser.js')}}"></script>
 <x-admin>
     <x-view-header title="Edit User">
         <div class="header-buttons">
