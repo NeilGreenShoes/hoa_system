@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Limelight&family=Space+Grotesk&display=swap" rel="stylesheet">
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <script src="{{ asset(['js/auth/login.js'])}}"></script>
+    <script src="{{ asset('js/auth/login.js')}}"></script>
 </head>
 
 <div class="container-form">
