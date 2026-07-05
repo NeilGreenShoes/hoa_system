@@ -10,10 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Limelight&&family=Montserrat&family=Space+Grotesk&display=swap" rel="stylesheet">
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <script src="{{ asset('js/admin/admin.js')}}"></script>
-    <link rel="stylesheet" href="{{ asset('css/global.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/admin/sidebar.css') }}">
+    <script src="{{ asset('public/js/admin/admin.js')}}"></script>
+    <link rel="stylesheet" href="{{ asset('public/css/global.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/admin/admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/admin/sidebar.css') }}">
 </head>
 <body>
     <div class="container">

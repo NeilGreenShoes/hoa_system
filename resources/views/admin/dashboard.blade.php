@@ -1,5 +1,5 @@
-<script src="{{('js/admin/dashboard.js')}}"></script>
-<link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}">
+<script src="{{('public/js/admin/dashboard.js')}}"></script>
+<link rel="stylesheet" href="{{ asset('public/css/admin/dashboard.css') }}">
 <x-admin>
     <x-view-header title="Dashboard">
         
