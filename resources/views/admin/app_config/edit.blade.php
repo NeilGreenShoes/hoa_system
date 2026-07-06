@@ -1,4 +1,4 @@
-<scipt src="{{ asset('public/js/admin/app_config/edit.js'))}}"></script>
+<scipt src="{{ asset('public/js/admin/app_config/edit.js')}}"></script>
 <x-admin>
     <x-view-header title="App Configuration">
     </x-view-header>

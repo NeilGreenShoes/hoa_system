@@ -30,7 +30,7 @@ body{
     display:flex;
     position: relative;
     flex-direction: column;
-    background: rgb(24, 66, 255); 
+    background: var(--primary-color); 
     border-radius: 0 .7rem .7rem 0rem;
     padding:.5rem;
     margin:0rem;

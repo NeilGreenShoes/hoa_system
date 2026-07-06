@@ -43,7 +43,7 @@
 </div>
 <div class="container-img">
     <div class="image-filter"></div>
-    <img class="image-login" src="{{ asset('images/placeholder.jpg')}}" alt="photo of hoa">
+    <img class="image-login" src="{{ asset('public/images/placeholder.jpg')}}" alt="photo of hoa">
     <div class="image-tag">
         <h1>Simplicity is the ultimate sophistication</h1>
         <h3>— Leonardo da Vinci</h3>
