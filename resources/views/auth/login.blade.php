@@ -11,6 +11,7 @@
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <script src="{{ asset('public/js/auth/login.js')}}"></script>
+    @include('layouts.theme')
     <link rel="stylesheet" href="{{ asset('public/css/global.css') }}">
     <link rel="stylesheet" href="{{ asset('public/css/login.css') }}">
 </head>
