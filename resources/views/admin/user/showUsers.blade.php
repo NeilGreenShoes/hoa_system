@@ -1,5 +1,16 @@
-<script src="{{ asset('public/js/admin/users/showUsers.js')}}"></script>
-<link rel="stylesheet" href="{{ asset('public/css/admin/users/showUser.css') }}">
+@php
+    $jsPath = file_exists(public_path('js/admin/users/showUsers.js')) 
+        ? asset('js/admin/users/showUsers.js') 
+        : asset('public/js/admin/users/showUsers.js');
+
+    $cssPath = file_exists(public_path('css/admin/users/showUsers.css')) 
+        ? asset('css/admin/users/showUsers.css') 
+        : asset('public/css/admin/users/showUsers.css');
+@endphp
+
+<script src="{{ $jsPath }}"></script>
+<link rel="stylesheet" href="{{ $cssPath }}">
+
 <x-admin>
     <x-view-header title="Users">
         <div class="header-buttons">
@@ -15,6 +26,10 @@
         </div>
     </x-view-header>
     <div class="container-user">
+        <div class="container-view">
+            <button class="btn btn-view" data-url=" {{route('showUsers')}}"> SHOW USERS</button>
+            <button class="btn btn-view" data-url="{{route('user_activity')}}">VIEW ACTIVITY LOGS</button>
+        </div>
         <table class="table-user">
             <thead class="table-header">
                 <tr>
@@ -52,7 +67,7 @@
                             <form action="{{ route('archiveUser', ['id' => $staffs->staffID]) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to archive this user?');">
                                 @csrf
                                 @method('PATCH')
-                                <button type="submit" class="btn btn-archive action-btn"><i class="fa-solid fa-box-archive"></i></button>
+                                <button type="submit" class="btn btn-archive "><i class="fa-solid fa-box-archive"></i></button>
                             </form>
                         </td>
                     </tr>

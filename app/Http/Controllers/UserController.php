@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Staff;
 use App\Models\Role;
 use App\Models\Address;
+// use App\Models\ActivityLogs;
 
 class UserController extends Controller
 {
@@ -191,7 +192,8 @@ class UserController extends Controller
 
     public function archive($id)
     {
-        $user = User::findOrFail($id);
+        $staff = Staff::findOrFail($id);
+        $user = User::findOrFail($staff->user->userID);
         $user->status = 'Archived';
         $user->save();
 

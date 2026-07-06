@@ -15,5 +15,10 @@ class AppConfig extends Model
     protected $fillable = [
         'app_name',
         'app_logo',
+        'primary_color',
+        'secondary_color',
+        'sidebar_color_primary',
+        'sidebar_color_secondary',
+        'background_color',
     ];
 }

@@ -1,6 +1,20 @@
-<scirpt src="{{ asset('public/js/admin/users/user.js')}}"></scirpt>
-<script src="{{ asset('public/js/admin/users/editUser.js')}}"></script>
-<link rel="stylesheet" href="{{ asset('public/css/admin/users/editUser.css') }}">
+@php
+    $userJsPath = file_exists(public_path('js/admin/users/user.js'))
+        ? asset('js/admin/users/user.js')
+        : asset('public/js/admin/users/user.js');
+
+    $editUserJsPath = file_exists(public_path('js/admin/users/editUser.js'))
+        ? asset('js/admin/users/editUser.js')
+        : asset('public/js/admin/users/editUser.js');
+
+    $editUserCssPath = file_exists(public_path('css/admin/users/editUser.css'))
+        ? asset('css/admin/users/editUser.css')
+        : asset('public/css/admin/users/editUser.css');
+@endphp
+
+<script src="{{ $userJsPath }}"></script>
+<script src="{{ $editUserJsPath }}"></script>
+<link rel="stylesheet" href="{{ $editUserCssPath }}">
 <x-admin>
     <x-view-header title="Edit User">
         <div class="header-buttons">

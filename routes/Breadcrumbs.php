@@ -1,9 +1,13 @@
 <?php // routes/breadcrumbs.php
 
+if (defined('BREADCRUMBS_LOADED')) {
+    return;
+}
+define('BREADCRUMBS_LOADED', true);
+
 // Note: Laravel will automatically resolve `Breadcrumbs::` without
 // this import. This is nice for IDE syntax and refactoring.
 
-use App\Models\User;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 
 // This import is also not required, and you could replace `BreadcrumbTrail $trail`
@@ -41,6 +45,12 @@ Breadcrumbs::for('editUser', function (BreadcrumbTrail $trail) {
     // $user = User::find($userID);
     $trail->parent('showUsers');
     $trail->push('Edit', route('editUser', ['id' => $userID]));
+});
+
+// Home > User > Activity
+Breadcrumbs::for('user_activity', function (BreadcrumbTrail $trail) {
+    $trail->parent('showUsers');
+    $trail->push('Activity Logs', route('user_activity'));
 });
 
 // Home > App Configuration

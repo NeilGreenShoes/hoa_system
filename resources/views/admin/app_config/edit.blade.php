@@ -1,3 +1,11 @@
+@php
+    $editJsPath = file_exists(public_path('js/admin/app_config/edit.js'))
+        ? asset('js/admin/app_config/edit.js')
+        : asset('public/js/admin/app_config/edit.js');
+@endphp
+
+<script src="{{ $editJsPath }}"></script>
+</script>
 <x-admin>
     <x-view-header title="App Configuration">
     </x-view-header>
@@ -14,8 +22,100 @@
                 <label for="app_logo">App Logo:</label>
                 <input type="file" id="app_logo" name="app_logo" accept="image/*">
                 @if ($appConfig && $appConfig->app_logo)
-                    <img src="{{ asset('storage/' . $appConfig->app_logo) }}" alt="App Logo" style="max-width: 100px; margin-top: 10px;">
+                    <img src="{{ file_exists(storage_path('public/storage' . $appConfig->app_logo))
+                    ? asset('storage/' . $appConfig->app_logo)
+                    : asset('images/default-logo.png') }}" alt="App Logo" style="max-width: 100px; margin-top: 10px;">
                 @endif
+            </div>
+
+            <div class="form-group">
+                <label for="primary_color">Primary Color:</label>
+                <div class="color-input-group">
+                    <input
+                        type="color"
+                        id="primary_color"
+                        name="primary_color"
+                        value="{{ $appConfig->primary_color ?? '#4f46e5' }}">
+
+                    <input
+                        type="text"
+                        id="primary_color_hex"
+                        value="{{ $appConfig->primary_color ?? '#4f46e5' }}"
+                        maxlength="7"
+                        placeholder="#4f46e5">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="secondary_color">Secondary Color:</label>
+                <div class="color-input-group">
+                    <input
+                        type="color"
+                        id="secondary_color"
+                        name="secondary_color"
+                        value="{{ $appConfig->secondary_color ?? '#4f46e5' }}">
+
+                    <input
+                        type="text"
+                        id="secondary_color_hex"
+                        value="{{ $appConfig->secondary_color ?? '#4f46e5' }}"
+                        maxlength="7"
+                        placeholder="#4f46e5">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="sidebar_color_primary">Sidebar Primary Color:</label>
+                <div class="color-input-group">
+                    <input
+                        type="color"
+                        id="sidebar_color_primary"
+                        name="sidebar_color_primary"
+                        value="{{ $appConfig->sidebar_color_primary ?? '#1f2937' }}">
+
+                    <input
+                        type="text"
+                        id="sidebar_color_primary_hex"
+                        value="{{ $appConfig->sidebar_color_primary ?? '#1f2937' }}"
+                        maxlength="7"
+                        placeholder="#1f2937">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="sidebar_color_secondary">Sidebar Secondary Color:</label>
+                <div class="color-input-group">
+                    <input
+                        type="color"
+                        id="sidebar_color_secondary"
+                        name="sidebar_color_secondary"
+                        value="{{ $appConfig->sidebar_color_secondary ?? '#1f2937' }}">
+
+                    <input
+                        type="text"
+                        id="sidebar_color_secondary_hex"
+                        value="{{ $appConfig->sidebar_color_secondary ?? '#1f2937' }}"
+                        maxlength="7"
+                        placeholder="#1f2937">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="background_color">Background Color:</label>
+                <div class="color-input-group">
+                    <input
+                        type="color"
+                        id="background_color"
+                        name="background_color"
+                        value="{{ $appConfig->background_color ?? '#1f2937' }}">
+
+                    <input
+                        type="text"
+                        id="sidebar_color_secondary_hex"
+                        value="{{ $appConfig->background_color ?? '#1f2937' }}"
+                        maxlength="7"
+                        placeholder="#1f2937">
+                </div>
             </div>
 
             <button type="submit" onclick="return confirm('Are you sure you want to update the app configuration?')">Update Configuration</button>

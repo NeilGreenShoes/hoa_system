@@ -4,7 +4,7 @@
     left: 0;
     width: 250px;
     height: 100vh;
-    background: linear-gradient(to bottom, #0F2E7A, #1A5FFF);
+    background: linear-gradient(to bottom, var(--sidebar-color-primary), var(--sidebar-color-secondary));
     color: white;
     padding: 1rem;
     box-sizing: border-box;

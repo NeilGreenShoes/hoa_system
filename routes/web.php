@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityLogsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
@@ -28,7 +29,15 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('admin/user/view/{id}', [UserController::class, 'view'])->name('viewUser');
     Route::patch('admin/user/archive/{id}', [UserController::class, 'archive'])->name('archiveUser');
 
+    Route::get('admin/user/user_activity', [ActivityLogsController::class, 'index'])->name('user_activity');
+
     Route::get('admin/app_config', [AppConfigController::class, 'index'])->name('admin.app_config.index');
     Route::get('admin/app_config/edit', [AppConfigController::class, 'edit'])->name('admin.app_config.edit');
     Route::post('admin/app_config/update', [AppConfigController::class, 'update'])->name('admin.app_config.update');
+});
+
+Route::middleware(['role:homeowner'])->group(function () {
+    Route::get('homeowner/dashboard', function(){
+        return view('homeowner.dashboard');
+    });
 });

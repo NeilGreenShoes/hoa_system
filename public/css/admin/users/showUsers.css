@@ -20,7 +20,7 @@
 }
 
 .table-header{
-    background-color: #1A5FFF;
+    background-color: var(--primary-color);
     color:white;
     border:none;
 }

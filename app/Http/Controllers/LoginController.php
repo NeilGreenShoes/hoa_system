@@ -15,11 +15,22 @@ use Illuminate\Support\Facades\Cache;
 use App\Models\User;
 use App\Models\UserLog;
 
+use App\Http\Controllers\ActivityLogsController;
+
 class LoginController extends Controller
 {
     public function index()
     {
         return view('auth/login');
+    }
+
+    private function getDashboardRoute($user)
+    {
+        return match ($user->role->roleName) {
+            'Admin' => 'admin/dashboard',
+            'Homeowner' => 'homeowner/dashboard',
+            default => '/',
+        };
     }
 
     public function authenticate(Request $request)
@@ -32,13 +43,25 @@ class LoginController extends Controller
         $user = User::where('loginEmail', $request->email)->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
-            
+
+            if ($user->status !== 'Active') {
+                ActivityLogsController::log(
+                    $user->userID,
+                    ($user->staff?->name ?? $user->loginEmail) . ' attempted to log in with an inactive account.'
+                );
+
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Your account is inactive. Please contact the administrator.'
+                ], 403);
+            }
+
             $agentParser = new Agent();
             $currentAgent = $request->header('User-Agent');
             $currentIp = $request->ip();
 
             $knownDevice = UserLog::where('userID', $user->userID)
-                ->where(function($query) use ($currentAgent, $currentIp) {
+                ->where(function ($query) use ($currentAgent, $currentIp) {
                     $query->where('agent', $currentAgent)
                         ->orWhere('ip_address', $currentIp);
                 })
@@ -50,13 +73,18 @@ class LoginController extends Controller
                 $user->isLoggedIn = 1;
                 $user->save();
 
+                ActivityLogsController::log(
+                    $user->userID,
+                    ($user->staff?->name ?? $user->loginEmail) . ' has logged in successfully as ' . ($user->role->roleName) . '.',
+                );
+
                 $this->storeUserLog($user->userID, $request);
 
-                return redirect('admin/dashboard')->with('success', 'Login successful.');
+                return redirect($this->getDashboardRoute($user))->with('message', 'Login successful.');
             }
 
             $otp = (string) random_int(100000, 999999);
-            
+
             session([
                 'otp_code' => $otp,
                 'otp_user_id' => $user->userID,
@@ -65,11 +93,23 @@ class LoginController extends Controller
 
             Mail::to($user->loginEmail)->send(new SendOtpMail($otp));
 
+            ActivityLogsController::log(
+                $user->userID,
+                ($user->staff?->name ?? $user->loginEmail) . ' attempted to log in from a new device. OTP sent.'
+            );
+
             return response()->json([
                 'status' => 'success',
                 'redirect' => false,
                 'message' => 'Credentials verified. New device detected. OTP sent.'
             ]);
+        }
+
+        if ($user) {
+            ActivityLogsController::log(
+                $user->userID,
+                ($user->staff?->name ?? $user->loginEmail) . ' failed to log in due to an incorrect password.'
+            );
         }
 
         return response()->json([
@@ -123,7 +163,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('admin/dashboard')->with('success', 'Login successful.');
+        return redirect($this->getDashboardRoute($user))->with('message', 'Login successful.');
     }
 
     public function forgotPassword(Request $request)

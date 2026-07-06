@@ -10,7 +10,7 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0, .2), whitesmoke);
+    background: linear-gradient(to bottom, rgba(0,0,0, .2), var(--background-color));
     box-sizing: border-box;
     overflow-x: none;
 }
@@ -41,8 +41,8 @@
 }
 
 .btn-primary{
-    background-color: #1A5FFF;
-    color: rgb(255, 255, 255);
+    background-color: var(--primary-color);
+    color: inherit;
     display:flex;
     flex-direction: row;
     align-items: center;
@@ -51,8 +51,8 @@
 }
 
 .btn-secondary{
-    background-color: #FFEE33;
-    color: #000000;
+    background-color: var(--secondary-color);
+    color: inherit;
     display:flex;
     flex-direction: row;
     align-items: center;
@@ -65,7 +65,7 @@
     top: 1rem;
     right: 1rem;
     background-color: #ffffff;
-    border-left: solid 5px #1A5FFF;
+    border-left: solid 5px var(--primary-color);
     color: rgb(0, 0, 0);
     padding: 1rem;
     border-radius: 0.5rem;

@@ -1,5 +1,15 @@
-<script src="{{('public/js/admin/dashboard.js')}}"></script>
-<link rel="stylesheet" href="{{ asset('public/css/admin/dashboard.css') }}">
+@php
+    $dashboardJsPath = file_exists(public_path('js/admin/dashboard.js'))
+        ? asset('js/admin/dashboard.js')
+        : asset('js/dashboard.js');
+
+    $dashboardCssPath = file_exists(public_path('css/admin/dashboard.css'))
+        ? asset('css/admin/dashboard.css')
+        : asset('css/dashboard.css');
+@endphp
+
+<script src="{{ $dashboardJsPath }}"></script>
+<link rel="stylesheet" href="{{ $dashboardCssPath }}">
 <x-admin>
     <x-view-header title="Dashboard">
         

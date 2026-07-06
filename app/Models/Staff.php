@@ -42,4 +42,9 @@ class Staff extends Model
     {
         return $this->lastName . ', ' . $this->firstName . ' ' . $this->middleName;
     }
+
+    public function name()
+    {
+        return $this->firstName . ' ' . $this->middleName[0] . '. ' . $this->lastName;
+    }
 }

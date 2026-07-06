@@ -21,6 +21,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $path = base_path('routes/Breadcrumbs.php');
+
+        if (!empty($path) && file_exists($path)) {
+            require_once $path;
+        }
+
+        $config = AppConfig::first();
+
+        View::share('config', $config);
+        
         View::composer('components.admin', function ($view) {
             $view->with('appConfig', AppConfig::first());
         });
