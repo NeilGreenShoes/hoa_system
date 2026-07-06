@@ -1,12 +1,4 @@
-@php
-    $showUsersJsPath = file_exists(public_path('js/admin/users/showUsers.js'))
-        ? asset('js/admin/users/showUsers.js')
-        : asset('public/js/admin/showUsers.js');
-
-    $showUsersCssPath = file_exists(public_path('css/admin/users/showUsers.css'))
-        ? asset('css/admin/users/showUsers.css')
-        : asset('public/css/admin/showUsers.css');
-@endphp
+<script src={{ asset('public/js/admin/users/showUsers.js')}}></script>
 <x-admin>
     <x-view-header title="Activity Logs">
     </x-view-header>

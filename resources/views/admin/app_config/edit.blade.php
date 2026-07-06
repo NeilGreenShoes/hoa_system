@@ -1,11 +1,4 @@
-@php
-    $editJsPath = file_exists(public_path('js/admin/app_config/edit.js'))
-        ? asset('js/admin/app_config/edit.js')
-        : asset('public/js/admin/app_config/edit.js');
-@endphp
-
-<script src="{{ $editJsPath }}"></script>
-</script>
+<scipt src="{{ asset('public/js/admin/app_config/edit.js'))}}"></script>
 <x-admin>
     <x-view-header title="App Configuration">
     </x-view-header>

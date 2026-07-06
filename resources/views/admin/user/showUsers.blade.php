@@ -1,16 +1,5 @@
-@php
-    $jsPath = file_exists(public_path('js/admin/users/showUsers.js')) 
-        ? asset('js/admin/users/showUsers.js') 
-        : asset('public/js/admin/users/showUsers.js');
-
-    $cssPath = file_exists(public_path('css/admin/users/showUsers.css')) 
-        ? asset('css/admin/users/showUsers.css') 
-        : asset('public/css/admin/users/showUsers.css');
-@endphp
-
-<script src="{{ $jsPath }}"></script>
-<link rel="stylesheet" href="{{ $cssPath }}">
-
+<script src="{{ asset('public/js/admin/users/showUsers.js')}}"></script>
+<link rel="stylesheet" href="{{ asset('public/css/admin/users/showUsers.css') }}">
 <x-admin>
     <x-view-header title="Users">
         <div class="header-buttons">

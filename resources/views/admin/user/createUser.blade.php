@@ -1,21 +1,6 @@
-@php
-    $userJsPath = file_exists(public_path('js/admin/users/user.js'))
-        ? asset('js/admin/users/user.js')
-        : asset('public/js/admin/users/createUser.js');
-
-    $createUserJsPath = file_exists(public_path('js/admin/users/createUser.js'))
-        ? asset('js/admin/users/createUser.js')
-        : asset('public/js/admin/users/createUser.js');
-
-    $createUserCssPath = file_exists(public_path('css/admin/users/createUser.css'))
-        ? asset('css/admin/users/createUser.css')
-        : asset('public/css/admin/users/createUser.css');
-@endphp
-
-<script src="{{ $userJsPath }}"></script>
-<script src="{{ $createUserJsPath }}"></script>
-<link rel="stylesheet" href="{{ $createUserCssPath }}">
-
+<script src="{{ file_exist(public_path('public/js/admin/users/user.js')) ? }}"></script>
+<script src="{{ asset('public/js/admin/users/createUser.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('public/css/admin/users/createUser.css') }}">
 <x-admin>
     <x-view-header title="Create User">
         <div class="header-buttons">
