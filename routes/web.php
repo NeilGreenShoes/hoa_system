@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AppConfigController;
+use App\Http\Controllers\HomeownerController;
 
 Route::get('/', function () {
     return view('index');
@@ -30,6 +31,8 @@ Route::middleware(['role:admin'])->group(function () {
     Route::patch('admin/user/archive/{id}', [UserController::class, 'archive'])->name('archiveUser');
 
     Route::get('admin/user/user_activity', [ActivityLogsController::class, 'index'])->name('user_activity');
+
+    Route::get('admin/homeowner/index', [HomeownerController::class, 'index'])->name('admin.homeowner.index');
 
     Route::get('admin/app_config', [AppConfigController::class, 'index'])->name('admin.app_config.index');
     Route::get('admin/app_config/edit', [AppConfigController::class, 'edit'])->name('admin.app_config.edit');

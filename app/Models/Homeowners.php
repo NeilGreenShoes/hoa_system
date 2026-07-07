@@ -39,4 +39,9 @@ class Homeowners extends Model
         return $this->belongsTo(Address::class, 'addressID', 'addressID');
     }
 
+    public function fullname()
+    {
+        return $this->lastName . ', ' . $this->firstName . ' ' . $this->middleName[0] . '.'; 
+    }
+
 }

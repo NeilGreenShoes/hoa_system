@@ -10,11 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Limelight&&family=Montserrat&family=Space+Grotesk&display=swap" rel="stylesheet">
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <script src="{{ asset('public/js/admin/admin.js')}}"></script>
+    <script src="{{ asset('resources/js/admin/admin.js')}}"></script>
     @include('layouts.theme')
-    <link rel="stylesheet" href="{{ asset('public/css/global.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/css/admin/admin.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/css/admin/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('resources/css/global.css') }}">
+    <link rel="stylesheet" href="{{ asset('resources/css/admin/admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('resources/css/admin/sidebar.css') }}">
 </head>
 <body>
     <div class="container">
@@ -39,7 +39,7 @@
                     </tr>
                     <tr>
                         <td><i class="fa-solid fa-house"></i></td>
-                        <td><a href="#">Homeowners</a></td>
+                        <td><a href="{{ route('admin.homeowner.index')}}">Homeowners</a></td>
                     </tr>
                     <tr>
                         <td><i class="fa-solid fa-arrow-right-arrow-left"></i></td>

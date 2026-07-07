@@ -1,9 +1,10 @@
 <style>
 :root {
-    --primary-color: {{ $config->primary_color ?? '#4f46e5' }};
-    --secondary-color: {{ $config->secondary_color ?? '#4f46e5' }};
-    --sidebar-color-primary: {{ $config->sidebar_color_primary ?? '#1f2937' }};
-    --sidebar-color-secondary: {{ $config->sidebar_color_secondary ?? '#1f2937' }};
-    --background-color: {{ $config->background_color ?? '#ffffff'}};
+    --primary-color: {{ $config->primary_color}};
+    --secondary-color: {{ $config->secondary_color }};
+    --sidebar-color-primary: {{ $config->sidebar_color_primary }};
+    --sidebar-color-secondary: {{ $config->sidebar_color_secondary}};
+    --background-color: {{ $config->background_color}};
+    --text-color: {{ $config->text_color }}
 }
 </style>

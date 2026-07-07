@@ -53,6 +53,12 @@ Breadcrumbs::for('user_activity', function (BreadcrumbTrail $trail) {
     $trail->push('Activity Logs', route('user_activity'));
 });
 
+// Home > Homeowners
+Breadcrumbs::for('admin.homeowner.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Homeowners', route('admin.homeowner.index'));
+});
+
 // Home > App Configuration
 Breadcrumbs::for('admin.app_config.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');

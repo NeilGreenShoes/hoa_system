@@ -1,4 +1,4 @@
-<script src={{ asset('public/js/admin/users/showUsers.js')}}></script>
+<script src={{ asset('resources/js/admin/users/showUsers.js')}}></script>
 <x-admin>
     <x-view-header title="Activity Logs">
     </x-view-header>

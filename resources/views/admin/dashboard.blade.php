@@ -1,4 +1,4 @@
-<script src="{{ asset('public/js/admin/dashboard.js')}}"></script>
+<script src="{{ asset('resources/js/admin/dashboard.js')}}"></script>
 <link rel="stylesheet" href="{{ asset('public/css/admin/dashboard.css') }}">
 <x-admin>
     <x-view-header title="Dashboard">

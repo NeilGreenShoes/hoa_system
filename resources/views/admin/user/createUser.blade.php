@@ -1,6 +1,6 @@
-<script src="{{ file_exist(public_path('public/js/admin/users/user.js')) ? }}"></script>
-<script src="{{ asset('public/js/admin/users/createUser.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('public/css/admin/users/createUser.css') }}">
+<script src="{{ asset('resources/js/admin/users/user.js') ? }}"></script>
+<script src="{{ asset('resources/js/admin/users/createUser.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('resources/css/admin/users/createUser.css') }}">
 <x-admin>
     <x-view-header title="Create User">
         <div class="header-buttons">
