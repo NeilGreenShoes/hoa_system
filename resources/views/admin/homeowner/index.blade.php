@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="{{ asset('resources/css/admin/homeowner/index.css')}}">
-<script src="{{ asset('resources/js/admin/homeowner/homeowner.js')}}"></script>
-<script src="{{ asset('resources/js/admin/homeowner/index.js')}}"></script>
+<link rel="stylesheet" href="{{ asset('resources/css/admin/homeowner/index.css')}}?v={{ filemtime(resource_path('css/admin/homeowner/index.css')) }}">
+<script src="{{ asset('resources/js/admin/homeowner/homeowner.js')}}?v={{ filemtime(resource_path('js/admin/homeowner/homeowner.js')) }}"></script>
+<script src="{{ asset('resources/js/admin/homeowner/index.js')}}?v={{ filemtime(resource_path('js/admin/homeowner/index.js')) }}"></script>
 <x-admin>
     <x-view-header title="Homeowner Registrations">
 

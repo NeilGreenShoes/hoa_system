@@ -1,6 +1,6 @@
-<script src="{{ asset('resources/js/admin/users/user.js') }}"></script>
-<script src="{{ asset('resources/js/admin/users/createUser.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('resources/css/admin/users/createUser.css') }}">
+<script src="{{ asset('resources/js/admin/users/user.js') }}?v={{ filemtime(resource_path('js/admin/users/user.js')) }}"></script>
+<script src="{{ asset('resources/js/admin/users/createUser.js') }}?v={{ filemtime(resource_path('js/admin/users/createUser.js')) }}"></script>
+<link rel="stylesheet" href="{{ asset('resources/css/admin/users/createUser.css') }}?v={{ filemtime(resource_path('css/admin/users/createUser.css')) }}">
 <x-admin>
     <x-view-header title="Create User">
         <div class="header-buttons">

@@ -1,6 +1,6 @@
-<scirpt src="{{ asset('resources/js/admin/users/user.js')}}"></scirpt>
-<script src="{{ asset('resources/js/admin/users/editUser.js')}}"></script>
-<link rel="stylesheet" href="{{ asset('resources/css/admin/users/editUser.css') }}">
+<scirpt src="{{ asset('resources/js/admin/users/user.js')}}?v={{ filemtime(resource_path('js/admin/users/user.js')) }}"></scirpt>
+<script src="{{ asset('resources/js/admin/users/editUser.js')}}?v={{ filemtime(resource_path('js/admin/users/editUser.js')) }}"></script>
+<link rel="stylesheet" href="{{ asset('resources/css/admin/users/editUser.css') }}?v={{ filemtime(resource_path('css/admin/users/editUser.css')) }}">
 <x-admin>
     <x-view-header title="Edit User">
         <div class="header-buttons">

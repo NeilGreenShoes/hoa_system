@@ -1,5 +1,5 @@
-<script src="{{ asset('resources/js/admin/users/showUsers.js')}}"></script>
-<link rel="stylesheet" href="{{ asset('resources/css/admin/users/showUsers.css') }}">
+<script src="{{ asset('resources/js/admin/users/showUsers.js')}}?v={{ filemtime(resource_path('js/admin/users/showUsers.js')) }}"></script>
+<link rel="stylesheet" href="{{ asset('resources/css/admin/users/showUsers.css') }}?v={{ filemtime(resource_path('css/admin/users/showUsers.css')) }}">
 <x-admin>
     <x-view-header title="Users">
         <div class="header-buttons">

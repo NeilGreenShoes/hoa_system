@@ -1,5 +1,5 @@
-<script src="{{ asset('resources/js/admin/dashboard.js')}}"></script>
-<link rel="stylesheet" href="{{ asset('resources/css/admin/dashboard.css') }}">
+<script src="{{ asset('resources/js/admin/dashboard.js')}}?v={{ filemtime(resource_path('js/admin/dashboard.js')) }}"></script>
+<link rel="stylesheet" href="{{ asset('resources/css/admin/dashboard.css') }}?v={{ filemtime(resource_path('css/admin/dashboard.css')) }}">
 <x-admin>
     <x-view-header title="Dashboard">
         

@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="{{ asset('resources/css/admin/homeowner/pending.css')}}">
-<script src="{{ asset('resources/js/admin/homeowner/homeowner.js')}}"></script>
-<script src="{{ asset('resources/js/admin/homeowner/pending.js')}}"></script>
+<link rel="stylesheet" href="{{ asset('resources/css/admin/homeowner/pending.css')}}?v={{ filemtime(resource_path('css/admin/homeowner/pending.css')) }}">
+<script src="{{ asset('resources/js/admin/homeowner/homeowner.js')}}?v={{ filemtime(resource_path('js/admin/homeowner/homeowner.js')) }}"></script>
+<script src="{{ asset('resources/js/admin/homeowner/pending.js')}}?v={{ filemtime(resource_path('js/admin/homeowner/pending.js')) }}"></script>
 <x-admin>
     <x-view-header title="Pending Registration">
     </x-view-header>
