@@ -2,13 +2,13 @@
 <x-admin>
     <x-view-header title="Activity Logs">
     </x-view-header>
-
-    <div class="container-logs">
+    <div class="container-view">
+        <button class="btn btn-view" data-url=" {{route('showUsers')}}"> SHOW USERS</button>
+        <button class="btn btn-view" data-url="{{route('user_activity')}}">VIEW ACTIVITY LOGS</button>
+    </div>
+    <div class="table-container container-logs">
         <div class="card shadow-sm">
-            <div class="container-view">
-                <button class="btn btn-view" data-url=" {{route('showUsers')}}"> SHOW USERS</button>
-                <button class="btn btn-view" data-url="{{route('user_activity')}}">VIEW ACTIVITY LOGS</button>
-            </div>
+            
             <div class="card-body">
                 <table class="table table-bordered table-striped">
                     <thead>

@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Maintenance extends Model
 {
+    use HasFactory;
     protected $table = 'maintenance_requests';
     protected $primaryKey = 'maintenanceID';
     protected $keyType = 'int';
@@ -21,6 +23,8 @@ class Maintenance extends Model
         'status',
         'membershipID', 
         'staffID',
+        'created_at',
+        'updated_at',
     ];
 
     public function membership()

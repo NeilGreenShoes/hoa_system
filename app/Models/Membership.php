@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Membership extends Model
 {
+    use HasFactory;
     protected $table = 'memberships';
     protected $primaryKey = 'membershipID';
     protected $keyType = 'int';
@@ -19,6 +21,8 @@ class Membership extends Model
         'homeownerID',
         'houseLotID',
         'registrationID',
+        'created_at',
+        'updated_at',
     ];
 
     public function homeowner()

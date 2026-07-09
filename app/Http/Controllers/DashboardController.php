@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\ActivityLogs;
 use Illuminate\Http\Request;
 use App\Models\Homeowners;
 use App\Models\Registrations;
@@ -17,7 +18,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // 1. Gather Total Counts & Financial Aggregations
         $totalHomeowners = Homeowners::count();
         
         $totalPendingRegistrations = Registrations::where('status', 'Pending')->count();
@@ -34,15 +34,15 @@ class DashboardController extends Controller
         
         $totalAnnouncements = Announcement::count();
 
-        // 2. Fetch Recent Complaints with exact model relationship chains
-        // Eager loading membership -> homeowner to get the creator's identity cleanly
         $recentComplaints = Complaints::with(['membership.homeowner'])
             ->orderBy('submitDate', 'desc')
             ->orderBy('created_at', 'desc')
             ->take(5)
             ->get();
 
-        // 3. Compact metrics and deliver data straight to your blade panel
+        $activitylogs = ActivityLogs::with('user.staff')->latest()->take(10)->get();
+        $announcements = Announcement::latest()->take(10)->get();
+
         return view('admin/dashboard', compact(
             'totalHomeowners',
             'totalPendingRegistrations',
@@ -52,7 +52,9 @@ class DashboardController extends Controller
             'totalUnpaidBillings',
             'totalWaterReadings',
             'totalAnnouncements',
-            'recentComplaints'
+            'recentComplaints',
+            'activitylogs',
+            'announcements'
         ));
     }
 }

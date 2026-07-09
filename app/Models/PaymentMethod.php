@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PaymentMethod extends Model
 {
+    use HasFactory;
     protected $table = 'payment_methods';
     protected $primaryKey = 'paymentMethodID';
     protected $keyType = 'int';
@@ -14,6 +16,8 @@ class PaymentMethod extends Model
 
     protected $fillable = [
         'methodName',
+        'created_at',
+        'updated_at',
     ];
 
     public function payments()

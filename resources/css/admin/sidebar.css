@@ -4,9 +4,19 @@
     left: 0;
     width: 250px;
     height: 100vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     background: linear-gradient(to bottom, var(--sidebar-color-primary), var(--sidebar-color-secondary));
-    color: white;
-    padding: 1rem;
+    color: contrast-color(
+        linear-gradient(
+            to bottom,
+            var(--sidebar-color-primary),
+            var(--sidebar-color-secondary)
+        )
+    );
+    padding: 4px 4px 4px 4px;
     box-sizing: border-box;
     overflow-y: none; 
     z-index: 100;
@@ -14,7 +24,7 @@
 
 .sidebar-wrapper {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     gap: .7rem;
@@ -73,4 +83,40 @@
 .sidebar-wrapper td:has(a):hover {
     background-color: #FFEE33;
     border-radius: .3rem;
+}
+
+.sidebar-footer {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    padding: 4px 4px 4px 12px;
+    gap:8px;
+    border-top: solid 1px #ccc;
+    color: color-mix(in srgb, white 85%, var(--secondary-color));
+}
+
+.sidebar-footer img{
+    height: 35px;
+    width: 35px;
+    border-radius: 24px;
+    background-color: #ccc;
+    object-fit: cover;
+}
+
+.sidebar-footer .profile-text .role{
+    font-size: 18px;
+    align-self:last baseline;
+}
+.sidebar-footer .profile-text .name{
+    font-size: 12px;
+    align-self:last baseline;
+    color: color-mix(in srgb, white 55%, var(--secondary-color));
+}
+
+.sidebar-footer a{
+    text-decoration: none;
+    color:inherit;
+    font-size: 16px;
+    align-self:center;
+    margin-left: auto;
 }

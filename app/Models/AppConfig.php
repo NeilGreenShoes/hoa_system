@@ -17,8 +17,13 @@ class AppConfig extends Model
         'app_logo',
         'primary_color',
         'secondary_color',
+        'tertiary_color',
         'sidebar_color_primary',
         'sidebar_color_secondary',
         'background_color',
+        'view_header_color',
+        'container_color',
+        'created_at',
+        'updated_at',
     ];
 }

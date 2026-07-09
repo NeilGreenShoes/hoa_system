@@ -1,22 +1,29 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const toast = document.querySelector(".message-container");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const logoutForm = document.getElementById("logoutForm");
 
-document.addEventListener('DOMContentLoaded', () => {
-    const toast = document.querySelector('.message-container');
-    
+    // Logout
+    if (logoutBtn && logoutForm) {
+        logoutBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            if (confirm("Confirm Log Out?")) {
+                logoutForm.submit();
+            }
+        });
+    }
+
+    // Toast
     if (toast) {
         setTimeout(() => {
-            toast.classList.add('hide');
-            
-            toast.addEventListener('animationend', (e) => {
-                
-                if (e.animationName === 'slideOutRight' || e.animationName === 'slideInRight') {
-                    toast.remove();
-                }
-            });
-
-            setTimeout(() => {
-                if (toast.parentNode) toast.remove();
-            }, 500);
-
+            toast.classList.add("hide");
         }, 4000);
+
+        toast.addEventListener("animationend", (e) => {
+            if (e.animationName === "slideOutRight") {
+                toast.remove();
+            }
+        });
     }
 });

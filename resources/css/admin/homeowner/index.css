@@ -1,0 +1,40 @@
+.container-homeowner{
+    width: 100%;
+    height:auto;
+}
+
+.profile-img{
+    height: 25px;
+    width: 25px;
+    border-radius: 24px;
+    background-color: #ccc;
+    object-fit: cover;
+}
+
+.status {
+    padding: 4px;
+    border-radius:8px;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center ;
+    gap:4px;
+}
+
+.span-online {
+    background: rgb(83, 253, 83);
+    color:white;
+}
+
+.online {
+    color:rgb(0, 109, 0);
+}
+
+.span-offline {
+    background: rgb(255, 128, 128);    
+    color:black;
+}
+
+.offline {
+    color:rgb(175, 32, 32);
+}

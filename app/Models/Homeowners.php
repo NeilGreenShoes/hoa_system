@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Homeowners extends Model
 {
+    use HasFactory;
     protected $table = "homeowners";
     protected $primaryKey = "homeownerID";
     protected $keyType = "int";
@@ -41,7 +43,7 @@ class Homeowners extends Model
 
     public function fullname()
     {
-        return $this->lastName . ', ' . $this->firstName . ' ' . $this->middleName[0] . '.'; 
+        return $this->lastName . ', ' . $this->firstName . ' ' . ($this->middleName ? strtoupper($this->middleName[0]) . '.' : '');; 
     }
 
 }

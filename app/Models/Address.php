@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Address extends Model
 {
+    use HasFactory;
+
     protected $table = 'addresses';
     protected $primaryKey = 'addressID';
     protected $keyType = 'int';
@@ -17,5 +20,7 @@ class Address extends Model
         'barangay',
         'city',
         'province',
+        'created_at',
+        'updated_at',
     ];
 }

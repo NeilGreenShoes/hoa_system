@@ -77,14 +77,82 @@
                 </tbody>
             </table>
 
-            <div class="sidebar-footer">
-                <a href="{{ route('logout') }}" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-            </div>
+            <footer class="sidebar-footer">
+                <img class="profile-img"
+                    src="{{ auth()->user()->staff && auth()->user()->staff->profileImage
+                            ? asset('storage/' . auth()->user()->staff->profileImage)
+                            : asset('images/default-avatar.png') }}"
+                    alt="Profile">
+                <div class="profile-text">
+                    <p class="role">{{auth()->user()->role->roleName}}</p>
+                    <p class="name">{{auth()->user()->staff->firstName ?? 'William'}}</p>
+                </div>
+                <a href="#" class="logout-link" id="logoutBtn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+
+                <form id="logoutForm" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </footer>
         </div>
 
         <!-- Main Content -->
         <div class="main-layout"> 
             {{ $slot }}
         </div>
-    </div>
+            @if (
+                session()->has('success') ||
+                session()->has('error') ||
+                session()->has('warning') ||
+                session()->has('info') ||
+                $errors->any()
+            )
+                @php
+                    $type = 'success';
+
+                    if (session()->has('error') || $errors->any()) {
+                        $type = 'error';
+                    } elseif (session()->has('warning')) {
+                        $type = 'warning';
+                    } elseif (session()->has('info')) {
+                        $type = 'info';
+                    }
+
+                    $icons = [
+                        'success' => 'fa-solid fa-circle-check',
+                        'error'   => 'fa-solid fa-circle-exclamation',
+                        'warning' => 'fa-solid fa-triangle-exclamation',
+                        'info'    => 'fa-solid fa-circle-info',
+                    ];
+                @endphp
+
+                <x-message class="message-{{ $type }}">
+                    <div style="display: flex; align-items: flex-start; gap: .75rem;">
+                        <i class="{{ $icons[$type] }}" style="font-size: 1.25rem;"></i>
+
+                        <div>
+                            @foreach (['success', 'error', 'warning', 'info'] as $messageType)
+                                @if (session()->has($messageType))
+                                    <strong>
+                                        <p style="margin: 0;">
+                                            {{ session($messageType) }}
+                                        </p>
+                                    </strong>
+                                @endif
+                            @endforeach
+
+                            @if ($errors->any())
+                                <strong>Please fix the following:</strong>
+                                <ul style="margin: .25rem 0 0; padding-left: 1.25rem; font-size: .9rem;">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </div>
+                    </div>
+                </x-message>
+            @endif
+        </div>
 </body>

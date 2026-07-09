@@ -9,35 +9,36 @@
             <button class="btn">
                  Export
             </button> --}}
-            <button type="button" class="add-btn btn-primary createBtn" data-url="{{ route('createUser') }}">
+            <button type="button" class="btn add-btn btn-primary createBtn" data-url="{{ route('createUser') }}">
                  Add User
             </button>
         </div>
     </x-view-header>
-    <div class="container-user">
-        <div class="container-view">
-            <button class="btn btn-view" data-url=" {{route('showUsers')}}"> SHOW USERS</button>
-            <button class="btn btn-view" data-url="{{route('user_activity')}}">VIEW ACTIVITY LOGS</button>
-        </div>
-        <table class="table-user">
+    <div class="container-view">
+        <button class="btn btn-view" data-url=" {{route('showUsers')}}"> SHOW USERS</button>
+        <button class="btn btn-view" data-url="{{route('user_activity')}}">VIEW ACTIVITY LOGS</button>
+    </div>
+    <div class="table-container container-user">
+        
+        <table class="table table-user">
             <thead class="table-header">
                 <tr>
                     <th>#</th>
-                    <th><i class="fa-solid fa-user fa-xl"></i> NAME</th>
-                    <th><i class="fa-regular fa-envelope fa-xl"></i>EMAIL</th>
-                    <th><i class="fa-solid fa-user-shield fa-xl"></i>ROLE</th>
-                    <th><i class="fa-solid fa-venus-mars fa-xl"></i>GENDER</th>
-                    <th><i class="fa-solid fa-phone fa-xl"></i>CONTACT</th>
-                    <th><i class="fa-solid fa-wave-square fa-xl"></i>STAUS</th>
-                    <th><i class="fa-regular fa-calendar fa-xl"></i>DATE CREATED</th>
-                    <th><i class="fa-solid fa-bars fa-xl"></i>ACTIONS</th>
+                    <th>NAME</th>
+                    <th>EMAIL</th>
+                    <th>ROLE</th>
+                    <th>GENDER</th>
+                    <th>CONTACT</th>
+                    <th>STAUS</th>
+                    <th>DATE CREATED</th>
+                    <th>ACTIONS</th>
                 </tr>
             </thead>
             <tbody class="table-body">
                
                 @foreach ($staff as $staffs)
                     <tr>
-                        <td>{{ ($staff->currentPage() - 1) * $staff->perPage() + $loop->index + 1 }}</td>
+                        <td>{{ $staff->firstItem() + $loop->index }}</td>
                         <td class="text-start">{{ $staffs->fullName() }}</td>
                         <td class="text-start">{{ $staffs->email }}</td>
                         <td>{{ $staffs->user->role->roleName }}</td>
@@ -56,7 +57,7 @@
                             <form action="{{ route('archiveUser', ['id' => $staffs->staffID]) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to archive this user?');">
                                 @csrf
                                 @method('PATCH')
-                                <button type="submit" class="btn btn-archive "><i class="fa-solid fa-box-archive"></i></button>
+                                <button type="submit" class="btn btn-tertiary btn-archive "><i class="fa-solid fa-box-archive"></i></button>
                             </form>
                         </td>
                     </tr>
@@ -67,20 +68,5 @@
     </div>
     {{ $staff->links('vendor.pagination.bootstrap-5') }}
 
-    @if (session('message') || $errors->any())
-        <x-message class="{{ $errors->any() ? 'message-error' : '' }}">
-            @if (session('message'))
-                <strong><p style="margin: 0;">{{ session('message') }}</p></strong>
-            @endif
-
-            @if ($errors->any())
-                <strong>Please fix the following:</strong>
-                <ul style="margin: 0.25rem 0 0 0; padding-left: 1.25rem; font-size: 0.9rem;">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            @endif
-        </x-message>
-    @endif
+    
 </x-admin> 

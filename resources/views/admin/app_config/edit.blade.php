@@ -1,4 +1,4 @@
-<scipt src="{{ asset('resources/js/admin/app_config/edit.js')}}"></script>
+{{-- <scipt src="{{ asset('resources/js/admin/app_config/edit.js')}}"></script> --}}
 <x-admin>
     <x-view-header title="App Configuration">
     </x-view-header>
@@ -29,13 +29,6 @@
                         id="primary_color"
                         name="primary_color"
                         value="{{ $appConfig->primary_color ?? '#4f46e5' }}">
-
-                    <input
-                        type="text"
-                        id="primary_color_hex"
-                        value="{{ $appConfig->primary_color ?? '#4f46e5' }}"
-                        maxlength="7"
-                        placeholder="#4f46e5">
                 </div>
             </div>
 
@@ -47,14 +40,36 @@
                         id="secondary_color"
                         name="secondary_color"
                         value="{{ $appConfig->secondary_color ?? '#4f46e5' }}">
-
-                    <input
-                        type="text"
-                        id="secondary_color_hex"
-                        value="{{ $appConfig->secondary_color ?? '#4f46e5' }}"
-                        maxlength="7"
-                        placeholder="#4f46e5">
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="tertiary_color">Tertiary Color:</label>
+                <div class="color-input-group">
+                    <input
+                        type="color"
+                        id="tertiary_color"
+                        name="tertiary_color"
+                        value="{{ $appConfig->tertiary_color ?? '#4f46e5' }}">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="view_header_color">View Header Color:</label>
+                <input
+                    type="color"
+                    id="view_header_color"
+                    name="view_header_color"
+                    value="{{ $appConfig->view_header_color ?? '#ffffff' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="container_color">Container Color:</label>
+                <input
+                    type="color"
+                    id="container_color"
+                    name="container_color"
+                    value="{{ $appConfig->container_color ?? '#ffffff' }}">
             </div>
 
             <div class="form-group">
@@ -65,13 +80,6 @@
                         id="sidebar_color_primary"
                         name="sidebar_color_primary"
                         value="{{ $appConfig->sidebar_color_primary ?? '#1f2937' }}">
-
-                    <input
-                        type="text"
-                        id="sidebar_color_primary_hex"
-                        value="{{ $appConfig->sidebar_color_primary ?? '#1f2937' }}"
-                        maxlength="7"
-                        placeholder="#1f2937">
                 </div>
             </div>
 
@@ -83,13 +91,6 @@
                         id="sidebar_color_secondary"
                         name="sidebar_color_secondary"
                         value="{{ $appConfig->sidebar_color_secondary ?? '#1f2937' }}">
-
-                    <input
-                        type="text"
-                        id="sidebar_color_secondary_hex"
-                        value="{{ $appConfig->sidebar_color_secondary ?? '#1f2937' }}"
-                        maxlength="7"
-                        placeholder="#1f2937">
                 </div>
             </div>
 
@@ -101,13 +102,6 @@
                         id="background_color"
                         name="background_color"
                         value="{{ $appConfig->background_color ?? '#1f2937' }}">
-
-                    <input
-                        type="text"
-                        id="sidebar_color_secondary_hex"
-                        value="{{ $appConfig->background_color ?? '#1f2937' }}"
-                        maxlength="7"
-                        placeholder="#1f2937">
                 </div>
             </div>
 

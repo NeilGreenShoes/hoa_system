@@ -88,9 +88,9 @@
         border-radius: 0.375rem !important;
         transition: all 0.2s ease-in-out;
         font-family: system-ui, -apple-system, sans-serif;
-        border: 1px solid #e2e8f0;
+        border: none;
         color: #4b5563; 
-        background-color: #f3f4f6; 
+        background-color: var(--tertiary-color); 
     }
 
     .pagination .page-item:first-child .page-link,
@@ -108,8 +108,8 @@
 
     .pagination .page-item.active .page-link {
         color: #ffffff !important;
-        background-color: #2563eb !important;
-        border-color: #2563eb !important;
+        background-color: var(--primary-color) !important;
+        border: none !important;
         box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
     }
 

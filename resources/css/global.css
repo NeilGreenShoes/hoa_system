@@ -30,47 +30,120 @@
 }
 
 .view-header {
-    background:rgb(255, 255, 255);
+    background:var(--view-header-color);
+    box-shadow: 0px 2px 4px -1px;
+    border-radius: .5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    min-height: 3rem;
+    min-height: 4rem;
+    max-height: 4rem;
     padding:1rem;
     gap:.5rem;
 }
 
-.btn-primary{
-    background-color: var(--primary-color);
-    color: inherit;
-    display:flex;
-    flex-direction: row;
+.btn{
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: .5rem;
+    padding: .5rem;
+    border-radius:.5rem;
+    border:none;
+    cursor:pointer;
+}
+
+.btn-primary{
+    background-color: color-mix(in srgb, var(--primary-color) 80%, black);
+    color: contrast-color(color-mix(in srgb, var(--primary-color) 80%, black));
+    transition: all .2s ease;
+}
+.btn-primary{
+    background-color: color-mix(in srgb, var(--primary-color) 80%, black);
 }
 
 .btn-secondary{
-    background-color: var(--secondary-color);
-    color: inherit;
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: .5rem;
+    background-color: color-mix(in srgb, var(--secondary-color) 80%, black);
+    color: contrast-color(color-mix(in srgb, var(--secondary-color) 80%, black));
 }
 
+.btn-tertiary{
+    background: var(--tertiary-color);
+    color: contrast-color(color-mix(in srgb, var(--secondary-color) 80%, black));
+}
+
+.table-container{
+    height:auto;
+    width:100%;
+    box-shadow: 0px 2px 4px -1px;
+    border-radius: .5rem;
+    background: white;
+    padding:4px;
+    border:none;
+}
+
+.table{
+    height:auto;
+    min-width: 100%;
+    max-width:100%;
+    background: white;
+    padding:4px;
+    border-collapse: collapse;
+    table-layout:auto;
+    overflow:none;
+}
+
+
+.table th, .table td {
+    overflow: hidden;         
+    text-overflow: ellipsis;  
+    white-space: nowrap;  
+    vertical-align: middle;
+}
+.description-cell {
+    max-width: 350px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+td img {
+    vertical-align: middle;
+}
+.table thead tr, 
+.table th {
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    padding: 10px 8px;
+}
+
+.table tbody tr {
+    border-top: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+    border-left: none;
+    border-right: none;
+}
+
+.table tbody tr:last-child{
+    border-bottom: none;
+}
+
+.table td {
+    padding: 12px 8px;
+}
 .message-container {
     position: fixed;
     top: 1rem;
     right: 1rem;
     background-color: #ffffff;
-    border-left: solid 5px var(--primary-color);
-    color: rgb(0, 0, 0);
+    border-left: 5px solid var(--primary-color);
+    color: #000;
     padding: 1rem;
     border-radius: 0.5rem;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 
     animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -78,10 +151,50 @@
 @keyframes slideInRight {
     from {
         transform: translateX(120%);
-        opacity: 0;                 
+        opacity: 0;
     }
     to {
-        transform: translateX(0); 
-        opacity: 1;                 
+        transform: translateX(0);
+        opacity: 1;
     }
+}
+
+.message-container.hide {
+    animation: slideOutRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+}
+
+.message-success {
+    background-color: #dcfce7;
+    border-left-color: #16a34a;
+    color: #166534;
+}
+
+.message-info {
+    background-color: #dbeafe;
+    border-left-color: #2563eb;
+    color: #1e40af;
+}
+
+.message-warning {
+    background-color: #fef3c7;
+    border-left-color: #d97706;
+    color: #92400e;
+}
+
+.message-error {
+    background-color: #fee2e2;
+    border-left-color: #dc2626;
+    color: #991b1b;
 }

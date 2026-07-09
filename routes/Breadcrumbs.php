@@ -58,6 +58,17 @@ Breadcrumbs::for('admin.homeowner.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
     $trail->push('Homeowners', route('admin.homeowner.index'));
 });
+// Home > Homeowners > Pending
+Breadcrumbs::for('admin.homeowner.pending', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.homeowner.index');
+    $trail->push('Pending', route('admin.homeowner.pending'));
+});
+// Home > Homeowners > Show
+Breadcrumbs::for('admin.homeowner.show', function (BreadcrumbTrail $trail) {
+    $homeowner = request()->route('id');
+    $trail->parent('admin.homeowner.index');
+    $trail->push('Show', route('admin.homeowner.show', ['id' => $homeowner]));
+});
 
 // Home > App Configuration
 Breadcrumbs::for('admin.app_config.index', function (BreadcrumbTrail $trail) {

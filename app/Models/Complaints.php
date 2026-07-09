@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Complaints extends Model
 {
+    use HasFactory;
     protected $table = 'complaints';
     protected $primaryKey = 'complaintID';
     protected $keyType = 'int';

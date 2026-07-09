@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 class WaterReading extends Model
 {
+    use HasFactory;
     protected $table = 'water_readings';
     protected $primaryKey = 'waterReadingID';
     protected $keyType = 'int';
@@ -21,6 +22,8 @@ class WaterReading extends Model
         'amount',
         'membershipID',
         'staffID',
+        'created_at',
+        'updated_at',
     ];
 
     public function membership()

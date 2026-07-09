@@ -1,4 +1,4 @@
-<script src="{{ asset('resources/js/admin/users/user.js') ? }}"></script>
+<script src="{{ asset('resources/js/admin/users/user.js') }}"></script>
 <script src="{{ asset('resources/js/admin/users/createUser.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('resources/css/admin/users/createUser.css') }}">
 <x-admin>
@@ -62,7 +62,7 @@
             <br />
             <div class="form-group form-contact">
                 <label for="contactNumber">Contact Number:</label>
-                <input type="text" name="contactNumber" id="contactNumber" required>
+                <input type="text" name="contactNumber" id="contactNumber" maxlength="11" required>
             </div>   
 
             PERSONAL ADDRESS 

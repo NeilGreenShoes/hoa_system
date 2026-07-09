@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Registrations extends Model
 {
+    use HasFactory;
     protected $table = "registrations";
     protected $primaryKey = "registrationID";
     protected $keyType = "int";
@@ -25,6 +27,7 @@ class Registrations extends Model
         'houseLotID',
         'userID',
         'staffID',
+        'billingID',
         'created_at',
         'updated_at',
     ];
@@ -46,6 +49,11 @@ class Registrations extends Model
 
     public function staff()
     {
-        return $this->belongsTo(User::class, 'staffID', 'userID');
+        return $this->belongsTo(Staff::class, 'staffID', 'staffID');
+    }
+
+    public function billing()
+    {
+        return $this->belongsTo(Billing::class, 'billingID', 'billingID');
     }
 }

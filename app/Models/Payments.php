@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Payments extends Model
 {
+    use HasFactory;
     protected $table = 'payments';
     protected $primaryKey = 'paymentID';
     public $incrementing = true;
@@ -19,6 +21,8 @@ class Payments extends Model
         'paymentMethodID',
         'billingID',
         'staffID',
+        'created_at',
+        'updated_at',
     ];
 
     public function paymentMethod()

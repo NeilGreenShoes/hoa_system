@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Role;
 
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -24,6 +25,8 @@ class User extends Authenticatable
         'isLoggedIn',
         'lastSession',
         'roleID',
+        'created_at',
+        'updated_at',
     ];
 
     public function role()
@@ -33,6 +36,6 @@ class User extends Authenticatable
 
     public function staff()
     {
-        return $this->hasOne(User::class, 'userID', 'userID');
+        return $this->hasOne(Staff::class, 'userID', 'userID');
     }
 }

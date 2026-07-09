@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Address;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Staff extends Model
 {
+    use HasFactory;
     protected $table = 'staffs';
     protected $primaryKey = 'staffID';
     protected $keyType = 'int';
@@ -26,6 +28,8 @@ class Staff extends Model
         'profileImage',
         'userID',
         'addressID',
+        'created_at',
+        'updated_at',
     ];
 
     public function user()
@@ -40,11 +44,11 @@ class Staff extends Model
 
     public function fullName()
     {
-        return $this->lastName . ', ' . $this->firstName . ' ' . $this->middleName;
+        return $this->lastName . ', ' . $this->firstName . ' ' . ($this->middleName ? strtoupper($this->middleName[0]) . '.' : '');
     }
 
     public function name()
     {
-        return $this->firstName . ' ' . $this->middleName[0] . '. ' . $this->lastName;
+        return $this->firstName . ' ' . ($this->middleName ? strtoupper($this->middleName[0]) . '. ' : '') . $this->lastName;
     }
 }

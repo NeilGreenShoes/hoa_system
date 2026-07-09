@@ -31,7 +31,7 @@
 
     .breadcrumb-item:hover {
         font-weight: bold;
-        color: #007bff;
+        color: var(--primary-color);
     }
 
     .breadcrumb-item + .breadcrumb-item::before {
