@@ -13,6 +13,7 @@ use App\Models\Payments;
 use App\Models\Billing;
 use App\Models\WaterReading;
 use App\Models\Announcement;
+use App\Models\Houselots;
 
 class DashboardController extends Controller
 {
@@ -41,8 +42,9 @@ class DashboardController extends Controller
             ->get();
 
         $activitylogs = ActivityLogs::with('user.staff')->latest()->take(10)->get();
-        $announcements = Announcement::latest()->take(10)->get();
+        $announcements = Announcement::latest()->where('created_at', now())->get();
 
+        $houselots = Houselots::all();
         return view('admin/dashboard', compact(
             'totalHomeowners',
             'totalPendingRegistrations',
@@ -54,7 +56,8 @@ class DashboardController extends Controller
             'totalAnnouncements',
             'recentComplaints',
             'activitylogs',
-            'announcements'
+            'announcements',
+            'houselots',
         ));
     }
 }

@@ -186,8 +186,8 @@ class UserController extends Controller
     }
     public function view($id)
     {
-        $user = User::findOrFail($id);
-        return view('admin/user/viewUser', compact('user'));
+        $staff = Staff::findOrFail($id);
+        return view('admin/user/viewUser', compact('staff'));
     }
 
     public function archive($id)

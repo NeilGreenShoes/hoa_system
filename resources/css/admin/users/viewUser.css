@@ -1,0 +1,140 @@
+.view-user-container{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+}
+
+.view-card{
+    width:100%;
+    background:var(--container-color);
+    border:1px solid rgba(0,0,0,.08);
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.card-title{
+    background:var(--view-header-color);
+    color:#fff;
+    font-size:1rem;
+    font-weight:600;
+    padding:1rem 1.5rem;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.staff-profile{
+    display:flex;
+    align-items:flex-start;
+    gap:2rem;
+    padding:1.5rem;
+}
+
+.staff-image{
+    width:150px;
+    flex-shrink:0;
+    display:flex;
+    justify-content:center;
+}
+
+.staff-image img{
+    width:150px;
+    height:150px;
+    object-fit:cover;
+    border-radius:50%;
+    border:4px solid var(--primary-color);
+    background:#fff;
+}
+
+.info-grid{
+    flex:1;
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:1rem 2rem;
+}
+
+.info-item{
+    display:flex;
+    flex-direction:column;
+    gap:.35rem;
+    padding-bottom:.75rem;
+    border-bottom:1px solid rgba(0,0,0,.06);
+}
+
+.info-item span{
+    font-size:.75rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.05rem;
+    color:#7a7a7a;
+}
+
+.info-item p{
+    margin:0;
+    font-size:.95rem;
+    font-weight:500;
+    color:var(--tertiary-color);
+    word-break:break-word;
+}
+
+.status{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:fit-content;
+    padding:.35rem .9rem;
+    border-radius:20px;
+    font-size:.8rem;
+    font-weight:600;
+}
+
+.status.active{
+    background:rgba(46,204,113,.15);
+    color:#1e8449;
+}
+
+.status.inactive{
+    background:rgba(231,76,60,.15);
+    color:#c0392b;
+}
+
+.status.pending{
+    background:rgba(243,156,18,.15);
+    color:#b9770e;
+}
+
+.view-card .info-grid{
+    padding:1.5rem;
+}
+
+.view-card .info-item:last-child{
+    border-bottom:none;
+}
+
+@media (max-width:900px){
+
+    .staff-profile{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+    }
+
+    .staff-image{
+        width:130px;
+    }
+
+    .staff-image img{
+        width:130px;
+        height:130px;
+    }
+
+    .info-grid{
+        width:100%;
+        grid-template-columns:1fr;
+    }
+
+    .info-item{
+        text-align:left;
+    }
+
+}

@@ -70,6 +70,12 @@ Breadcrumbs::for('admin.homeowner.show', function (BreadcrumbTrail $trail) {
     $trail->push('Show', route('admin.homeowner.show', ['id' => $homeowner]));
 });
 
+// Home > Ownership Transfers
+Breadcrumbs::for('admin.ownership.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Ownership Transfers', route('admin.ownership.index'));
+});
+
 // Home > App Configuration
 Breadcrumbs::for('admin.app_config.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');

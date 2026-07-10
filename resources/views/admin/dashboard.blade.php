@@ -1,9 +1,9 @@
 <script src="{{ asset('resources/js/admin/dashboard.js')}}?v={{ filemtime(resource_path('js/admin/dashboard.js')) }}"></script>
 <link rel="stylesheet" href="{{ asset('resources/css/admin/dashboard.css') }}?v={{ filemtime(resource_path('css/admin/dashboard.css')) }}">
 <x-admin>
-    <x-view-header title="Dashboard">
+    {{-- <x-view-header title="Dashboard">
         
-    </x-view-header>
+    </x-view-header> --}}
 
     <div class="container-dashboard">
         <div class="container-info">
@@ -12,171 +12,230 @@
         </div>
 
         <hr />
-
+        <h1 class="title">OVERVIEW</h1>
+        <br>
         <div class="container-metrics">
+            
             <div class="metric-card">
-                <span>Total Homeowners</span>
+                <div class="icon"><i class="fa-solid fa-user-group fa-xl"></i></div>
                 <h2>{{ $totalHomeowners }}</h2>
+                <span class="text">Total Homeowners</span>
             </div>
 
             <div class="metric-card">
-                <span>Pending Registrations</span>
+                <div class="icon"><i class="fa-regular fa-clipboard fa-xl"></i></div>
                 <h2>{{ $totalPendingRegistrations }}</h2>
+                <span class="text">Pending Registrations</span>
             </div>
 
             <div class="metric-card">
-                <span>Active Complaints</span>
+                <div class="icon"><i class="fa-solid fa-triangle-exclamation fa-xl"></i></div>
                 <h2>{{ $totalActiveComplaints }}</h2>
+                <span class="text">Active Complaints</span>
             </div>
 
             <div class="metric-card">
-                <span>Maintenance Requests</span>
+                <div class="icon"><i class="fa-solid fa-wrench fa-xl"></i></div>
                 <h2>{{ $totalMaintenanceRequests }}</h2>
+                <span class="text">TMaintenance Requests</span>
             </div>
 
             <div class="metric-card">
-                <span >Total Collections</span>
+                <div class="icon"><i class="fa-solid fa-arrow-trend-up fa-xl"></i></div>
                 <h2 >₱{{ number_format($totalCollectionsAmount, 2) }}</h2>
+                <span class="text">Total Collections</span>
             </div>
 
             <div class="metric-card" >
-                <span>Unpaid Billings</span>
+                <div class="icon"><i class="fa-solid fa-coins fa-xl"></i></div>
                 <h2 >{{ $totalUnpaidBillings }}</h2>
+                <span class="text">Unpaid Billings</span>
             </div>
 
             <div class="metric-card">
-                <span>Water Readings</span>
+                <div class="icon"><i class="fa-solid fa-gauge fa-xl"></i></div>
                 <h2>{{ $totalWaterReadings }}</h2>
+                <span class="text">Water Readings</span>
             </div>
 
             <div class="metric-card">
-                <span >Announcements</span>
+                <div class="icon"><i class="fa-solid fa-bullhorn fa-xl"></i></div>
                 <h2 >{{ $totalAnnouncements }}</h2>
+                <span class="text">Announcements</span>
             </div>
         </div>
-        <div class="container-complaints">
-            <h2>Recent Complaints</h2>
-            <div>
-                <table class="table-complaints">
-                    <thead>
-                        <tr>
-                            <th>Homeowner</th>
-                            <th>Subject/Title</th>
-                            <th>Status</th>
-                            <th>Date Submitted</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($recentComplaints as $complaint)
+        <div class="container-complaint-logs">
+            <div class="container-complaints">
+                <div class="complaint-header">
+                    <h2 class="title">Recent Complaints</h2>
+                    <a>View All</a>
+                </div>
+                <div>
+                    <table class="table-complaints">
+                        <thead>
                             <tr>
-                                <td class="homeowner-name">
-                                    @if($complaint->membership && $complaint->membership->homeowner)
-                                        {{ $complaint->membership->homeowner->firstName }} {{ $complaint->membership->homeowner->lastName }}
-                                    @else
-                                        <span>Unknown Homeowner</span>
-                                    @endif
-                                </td>
-                                <td><strong>{{ $complaint->title }}</strong></td>
-                                <td class="complaint-status">
-                                    <span>
-                                        {{ $complaint->status }}
-                                    </span>
-                                </td>
-                                <td class="complaint-date">
-                                    {{ \Carbon\Carbon::parse($complaint->submitDate)->format('M d, Y') }}
-                                </td>
+                                <th>Homeowner</th>
+                                <th>Subject/Title</th>
+                                <th>Status</th>
+                                <th>Date Submitted</th>
                             </tr>
-                        @empty
-                            <tr class="no-complaints">
-                                <td colspan="4">No recent complaints logged.</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @forelse ($recentComplaints as $complaint)
+                                <tr>
+                                    <td class="homeowner-name">
+                                        @if($complaint->membership && $complaint->membership->homeowner)
+                                            {{ $complaint->membership->homeowner->firstName }} {{ $complaint->membership->homeowner->lastName }}
+                                        @else
+                                            <span>Unknown Homeowner</span>
+                                        @endif
+                                    </td>
+                                    <td><strong>{{ $complaint->title }}</strong></td>
+                                    <td class="complaint-status">
+                                        <span>
+                                            {{ $complaint->status }}
+                                        </span>
+                                    </td>
+                                    <td class="complaint-date">
+                                        {{ \Carbon\Carbon::parse($complaint->submitDate)->format('M d, Y') }}
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr class="no-complaints">
+                                    <td colspan="4">No recent complaints logged.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+                
             </div>
-        </div>
 
-        <div class="container-activity-logs">
-            <h2>ACTIVITY LOGS</h2>
-            <div>
-                <table class="table table-complaints">
-                    <thead>
-                        <tr>
-                            <th>Homeowner</th>
-                            <th>Description</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($activitylogs as $activitylog)
-                            <tr>
-                                <td class="logs-name">
+            <div class="container-activity-logs">
+                <h2 class="title">ACTIVITY LOGS</h2>
+                <div class="container-log-rows">
+                    @forelse ($activitylogs as $activitylog)
+                        <div class="log-row">
+                            <div class="log-row-icon"><i class="fa-solid fa-circle"></i></div>
+                            <div class="log-row-text">
+                                <div class="log-row-name">
                                     @if($activitylog->user  && $activitylog->user->staff)
                                         {{ $activitylog->user->staff->name() }}
                                     @else
                                         <span>Unknown User</span>
                                     @endif
-                                </td>
-
-                                <td>
+                                </div>
+                                <div class="log-row-desc">
                                     {{ $activitylog->description}}
-                                </td>
-
-                                <td>
                                     {{ $activitylog->created_at->format('M d, Y')}}
-                                </td>
-                            </tr> 
-                        @empty
-                            <tr class="no-activities">
-                                <td colspan="4">No recent activities logged.</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="no-activities">
+                            <p>No recent activities logged.</p>
+                        </div>
+                    @endforelse
+                </div>
             </div>
         </div>
-        <div class="container-announcments">
-            <h2>ANNOUNCEMENT</h2>
-            <div>
-                <table class="table table-announcement">
+        
+        <div class="container-announcements">
+            <h2 class="title">ANNOUNCEMENT</h2>
+            <div class="card-container">
+                @forelse ($announcements as $announcement)
+                    <div class="card-anc">
+                        <div class="card-anc-header">
+                            <h2 class="target-badge target-{{ strtolower($announcement->targetType) }}">
+                                {{ $announcement->targetType }}
+                            </h2>
+                            <p>{{ $announcement->created_at->format('M d, Y')}}</p>
+                        </div>
+                        <div class="card-anc-text">
+                            <h1>{{ $announcement->title}}</h1>
+                            <p>{{ $announcement->description}}</p>
+                        </div>
+                    </div>  
+                @empty
+                    <div class="no-activities">
+                        <td colspan="4">No recent announcements.</td>
+                    </div>
+                @endforelse
+            </div>
+        </div>
+
+        <div class="container-monitoring">
+            <h2 class="title">House & Lot Monitoring</h2>
+            <p>Valeen Vista Subdivision - 14 Blocks, 51 Lots, System generated status
+            <div class="monitoring-kanban">
+                <div class="monitoring-card">
+                   <strong> {{$houselots->count()}} </strong>
+                    Total Lots
+                </div>
+                <div class="monitoring-card">
+                   <strong> {{$totalHomeowners}} </strong>
+                    Registered
+                </div>
+                <div class="monitoring-card">
+                   <strong> {{$houselots->where('occupancyStatus', 'Occupied')->count()}} </strong>
+                    Occupied
+                </div>
+                <div class="monitoring-card">
+                   <strong> {{$houselots->where('occupancyStatus', 'Vacant')->count()}} </strong>
+                    Vacant
+                </div>
+                <div class="monitoring-card">
+                   <strong> {{$houselots->where('occupancyStatus', 'Vacant')->count()}} </strong>
+                    Vacant
+                </div>
+                <div class="monitoring-card">
+                   <strong> {{$houselots->where('occupancyStatus', 'Vacant')->count()}} </strong>
+                    Vacant
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="table">
                     <thead>
                         <tr>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Target</th>
-                            <th>Posted on</th>
-                            <th>Posted by</th>
+                            <td>BLOCK / LOT</td>
+                            <td>OWNER NAME</td>
+                            <td>VACANCY STATUS</td>
+                            <td>LOT OWNERSHIP STATUS</td>
+                            <td>OCCUPIER STATUS</td>
+                            <td>MEMBERS</td>
+                            <td>RENTERS</td>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($announcements as $announcement)
+                        @forelse($houselots as $lots)
                             <tr>
-                                <td>{{ $announcement->title}}</td>
-                                <td class="description-cell">{{ $announcement->description}}</td>
-                                <td>{{ $announcement->targetType}}</td>
-                                <td>{{ $announcement->created_at->format('M d, Y')}}</td>
-                                <td class="announcment-name">
-                                    @if($announcement->staff)
-                                        {{ $announcement->staff->name() }}
-                                    @else
-                                        <span>Unknown Staff</span>
-                                    @endif
+                                <td>BLK. {{ $lots->blockNumber }} LT. {{ $lots->lotNumber }}</td>
+                                
+                                <td>{{ $lots->homeowner->fullname() }}</td>
+                                
+                                <td>
+                                    <span class="status-badge status-{{ strtolower(str_replace(' ', '-', $lots->occupancyStatus)) }}">
+                                        {{ $lots->occupancyStatus }}
+                                    </span>
                                 </td>
-                            </tr>     
+                                
+                                <td>{{ $lots->ownership_status }}</td>
+                                
+                                <td>{{ $lots->occupier_status }}</td>
+                                
+                                <td>{{ $lots->members->count() ?? 0 }} Members</td>
+                                
+                                <td>{{ $lots->renters ?? 'None' }}</td>
+                            </tr>
                         @empty
-                            <tr class="no-activities">
-                                <td colspan="4">No recent activities logged.</td>
+                            <tr>
+                                <td colspan="7" style="text-align: center; color: #888;">No Homeowners found</td>
                             </tr>
                         @endforelse
+
                     </tbody>
                 </table>
-            </div>
-        </div>
-
-        <div class="container-visualizations">
-            <h2>Visualizations</h2>
-            <div class="chart-container">
-                <canvas id="complaintsChart"></canvas>
             </div>
         </div>
     </div>

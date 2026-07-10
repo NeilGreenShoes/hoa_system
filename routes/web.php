@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AppConfigController;
 use App\Http\Controllers\HomeownerController;
+use App\Http\Controllers\OwnershipTransfersController;
 
 Route::get('/', function () {
     return view('index');
@@ -39,6 +40,8 @@ Route::middleware(['role:admin'])->group(function () {
     Route::post('admin/homeowner/reject_registration/{id}', [HomeownerController::class, 'rejectRegistration'])->name('admin.homeowner.reject_registration');
     Route::post('admin/homeowner/request_update_profile/{id}', [HomeownerController::class, 'requestUpdateProfile'])->name('admin.homeowner.request_update_profile');
     Route::get('admin/homeowner/show/{id}', [HomeownerController::class, 'show'])->name('admin.homeowner.show');
+
+    Route::get('admin/ownership/index', [OwnershipTransfersController::class, 'index'])->name('admin.ownership.index');
 
     Route::get('admin/app_config', [AppConfigController::class, 'index'])->name('admin.app_config.index');
     Route::get('admin/app_config/edit', [AppConfigController::class, 'edit'])->name('admin.app_config.edit');

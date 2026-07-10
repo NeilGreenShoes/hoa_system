@@ -2,8 +2,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="{{ asset('favico.ico')}}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('favico.ico') }}">
+    <link rel="icon" href="{{ asset('public/fav.ico')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('public/fav.ico') }}">
     <title>HOA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

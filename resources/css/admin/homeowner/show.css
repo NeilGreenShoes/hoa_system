@@ -1,0 +1,123 @@
+.view-user-container{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+}
+
+.view-card{
+    width:100%;
+    background:var(--container-color);
+    border:1px solid rgba(0,0,0,.08);
+    border-radius:12px;
+    overflow:hidden;
+    transition:.2s ease;
+}
+
+.view-card:hover{
+    border-color:var(--primary-color);
+}
+
+.card-title{
+    padding:1rem 1.5rem;
+    background:var(--view-header-color);
+    color:#fff;
+    font-size:1rem;
+    font-weight:600;
+    letter-spacing:.3px;
+}
+
+.staff-profile{
+    display:flex;
+    align-items:flex-start;
+    gap:2rem;
+    padding:2rem;
+}
+
+.staff-image{
+    width:170px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    flex-shrink:0;
+}
+
+.staff-image img{
+    width:170px;
+    height:170px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid var(--primary-color);
+    background:#fff;
+}
+
+.info-grid{
+    flex:1;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:1.25rem 2rem;
+}
+
+.info-item{
+    display:flex;
+    flex-direction:column;
+    gap:.35rem;
+    padding-bottom:.75rem;
+    border-bottom:1px solid rgba(0,0,0,.06);
+}
+
+.info-item span{
+    font-size:.75rem;
+    text-transform:uppercase;
+    letter-spacing:.08rem;
+    color:#8c8c8c;
+    font-weight:600;
+}
+
+.info-item p{
+    margin:0;
+    color:var(--tertiary-color);
+    font-size:.95rem;
+    font-weight:500;
+    line-height:1.5;
+    word-break:break-word;
+}
+
+.info-item:last-child{
+    border-bottom:none;
+}
+
+/* Full-width fields like Address */
+.info-item.full-width{
+    grid-column:1/-1;
+}
+
+/* Responsive */
+@media (max-width:900px){
+
+    .staff-profile{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+        padding:1.5rem;
+    }
+
+    .staff-image{
+        width:140px;
+    }
+
+    .staff-image img{
+        width:140px;
+        height:140px;
+    }
+
+    .info-grid{
+        width:100%;
+        grid-template-columns:1fr;
+    }
+
+    .info-item{
+        text-align:left;
+    }
+
+}

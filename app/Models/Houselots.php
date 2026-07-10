@@ -28,4 +28,14 @@ class Houselots extends Model
     {
         return $this->hasMany(Registrations::class, 'houseLotID', 'houseLotID');
     }
+
+    public function homeowner()
+    {
+        return $this->belongsTo(Homeowners::class, 'homeownerID', 'homeownerID');
+    }
+
+    public function members()
+    {
+        return $this->hasMany(Membership::class, 'houseLotID', 'houseLotID');
+    }
 }
