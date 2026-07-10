@@ -20,7 +20,7 @@
                 @forelse($ownershipTransfer as $ownership)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>B{{ $ownership->}}
+                    
                 </tr>
                 @empty
                 <tr>
