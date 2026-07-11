@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class sendOtpMail extends Mailable
+class SendOtpMail extends Mailable
 {
     use Queueable, SerializesModels;
 
