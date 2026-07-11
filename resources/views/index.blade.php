@@ -26,8 +26,13 @@
                 <a>ABOUT US</a>
                 <a>CONTACTS</a>
             </div>
-            <div class="login">
-                <a href="{{ route('login')}}">LOGIN</a>
+            <div class="nav-login">
+                <div class="register">
+                    <a href="{{ route('register')}}">REGISTER</a>
+                </div>
+                <div class="login">
+                    <a href="{{ route('login')}}">LOGIN</a>
+                </div>
             </div>
         </nav>
         <div class="hero-section">

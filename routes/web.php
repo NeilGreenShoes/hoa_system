@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AppConfigController;
 use App\Http\Controllers\HomeownerController;
 use App\Http\Controllers\OwnershipTransfersController;
+use App\Http\Controllers\RegisterController;
 
 Route::get('/', function () {
     return view('index');
@@ -20,6 +21,14 @@ Route::post('reset_password', [LoginController::class, 'forgotPassword'])->name(
 Route::post('verify_otp', [LoginController::class, 'verifyOtp'])->name('verify_otp');
 Route::post('/update_password', [LoginController::class, 'updatePassword'])->name('update_password');
 Route::match(['post', 'get'], 'logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register/send-otp', [RegisterController::class, 'sendOtp'])->name('register.sendOtp');
+Route::post('/submit', [RegisterController::class, 'register'])->name('submit');
+
+Route::get('/download', function(){
+    return view('download');
+});
 
 Route::middleware(['role:admin'])->group(function () {
     Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');

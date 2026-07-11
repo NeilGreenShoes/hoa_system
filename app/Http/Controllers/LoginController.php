@@ -284,4 +284,11 @@ class LoginController extends Controller
             'ip_address' => $request->ip(),
         ]);
     }
+
+    public function register()
+    {
+        return view('auth.register');
+    }
+
+    
 }

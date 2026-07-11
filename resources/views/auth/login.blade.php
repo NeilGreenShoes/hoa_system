@@ -40,6 +40,10 @@
             <button class="btn-secondary" type="btn-secondary button">Go Back</button>
             
         </div>
+
+        <div>
+            <h4>Don't have an account?</h4> <a href="{{route('register')}}">Sign Up</a>
+        </div>
     </form>
 </div>
 <div class="container-img">
