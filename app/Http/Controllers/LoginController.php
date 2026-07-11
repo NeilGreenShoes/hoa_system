@@ -47,7 +47,7 @@ class LoginController extends Controller
             if ($user->status !== 'Active') {
                 ActivityLogsController::log(
                     $user->userID,
-                    ($user->staff?->name ?? $user->loginEmail) . ' attempted to log in with an inactive account.'
+                    ($user->staff?->name() ?? $user->loginEmail) . ' attempted to log in with an inactive account.'
                 );
 
                 return response()->json([
@@ -75,7 +75,7 @@ class LoginController extends Controller
 
                 ActivityLogsController::log(
                     $user->userID,
-                    ($user->staff?->name ?? $user->loginEmail) . ' has logged in successfully as ' . ($user->role->roleName) . '.',
+                    ($user->staff?->name() ?? $user->loginEmail) . ' has logged in successfully as ' . ($user->role->roleName) . '.',
                 );
 
                 $this->storeUserLog($user->userID, $request);
@@ -95,7 +95,7 @@ class LoginController extends Controller
 
             ActivityLogsController::log(
                 $user->userID,
-                ($user->staff?->name ?? $user->loginEmail) . ' attempted to log in from a new device. OTP sent.'
+                ($user->staff?->name() ?? $user->loginEmail) . ' attempted to log in from a new device. OTP sent.'
             );
 
             return response()->json([
@@ -108,7 +108,7 @@ class LoginController extends Controller
         if ($user) {
             ActivityLogsController::log(
                 $user->userID,
-                ($user->staff?->name ?? $user->loginEmail) . ' failed to log in due to an incorrect password.'
+                ($user->staff?->name() ?? $user->loginEmail) . ' failed to log in due to an incorrect password.'
             );
         }
 
