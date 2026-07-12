@@ -37,13 +37,8 @@ class Complaints extends Model
         return $this->belongsTo(Staff::class, 'staffID', 'staffID');
     }
 
-    public function homeowner()
-    {
-        return $this->belongsTo(Homeowners::class, 'membershipID', 'homeownerID');
-    }
-
     public function membership()
     {
-        return $this->belongsTo(Membership::class, 'membershipID', 'homeownerID');
+        return $this->belongsTo(Membership::class, 'membershipID', 'membershipID');
     }
 }
