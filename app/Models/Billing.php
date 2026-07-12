@@ -31,6 +31,10 @@ class Billing extends Model
         'created_at',
         'updated_at',
     ];
+    protected $casts = [
+        'billingDate' => 'datetime',
+        'dueDate' => 'datetime',
+    ];
 
     public function waterReading()
     {

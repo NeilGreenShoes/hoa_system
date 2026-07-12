@@ -29,6 +29,9 @@ class LoginController extends Controller
         return match ($user->role->roleName) {
             'Admin' => 'admin/dashboard',
             'Homeowner' => 'homeowner/dashboard',
+            'Staff' => 'staff/dashboard',
+            'Cashier' => 'cashier/dashboard',
+            'Water Utility' => 'homeowner/dashboard',
             default => '/',
         };
     }

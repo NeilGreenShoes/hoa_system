@@ -28,6 +28,10 @@ class Complaints extends Model
         'updated_at',
     ];
 
+    protected $casts = [
+        'submitDate' => 'datetime',
+    ];
+
     public function staff()
     {
         return $this->belongsTo(Staff::class, 'staffID', 'staffID');

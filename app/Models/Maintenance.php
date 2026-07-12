@@ -27,6 +27,10 @@ class Maintenance extends Model
         'updated_at',
     ];
 
+    protected $casts = [
+        'requestDate' => 'datetime',
+    ];
+
     public function membership()
     {
         return $this->belongsTo(Membership::class, 'membershipID', 'membershipID');

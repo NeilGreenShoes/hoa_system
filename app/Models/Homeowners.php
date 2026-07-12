@@ -41,6 +41,11 @@ class Homeowners extends Model
         return $this->belongsTo(Address::class, 'addressID', 'addressID');
     }
 
+    public function lot()
+    {
+        return $this->hasOne(Houselots::class, 'homeownerID', 'homeownerID');
+    }
+
     public function fullname()
     {
         return $this->lastName . ', ' . $this->firstName . ' ' . ($this->middleName ? strtoupper($this->middleName[0]) . '.' : '');; 

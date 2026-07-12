@@ -47,19 +47,19 @@
                     </tr>
                     <tr>
                         <td><i class="fa-solid fa-clipboard"></i></td>
-                        <td><a href="#">Complaints</a></td>
+                        <td><a href="{{ route('admin.complaint.index')}}">Complaints</a></td>
                     </tr>
                     <tr>
                         <td><i class="fa-solid fa-wrench"></i></td>
-                        <td><a href="#">Maintenance</a></td>
+                        <td><a href="{{ route('admin.maintenance.index')}}">Maintenance</a></td>
                     </tr>
                     <tr>
                         <td><i class="fa-solid fa-droplet"></i></td>
-                        <td><a href="#">Water Monitoring</a></td>
+                        <td><a href="{{ route('admin.water_reading.index')}}">Water Monitoring</a></td>
                     </tr>
                     <tr>
                         <td><i class="fa-solid fa-credit-card"></i></td>
-                        <td><a href="#">Billing</a></td>
+                        <td><a href="{{route('admin.billing.index')}}">Billing</a></td>
                     </tr>
                     <tr>
                         <td><i class="fa-solid fa-bullhorn"></i></td>

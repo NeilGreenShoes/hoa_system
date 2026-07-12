@@ -26,6 +26,10 @@ class WaterReading extends Model
         'updated_at',
     ];
 
+    protected $casts = [
+        'readingDate' => 'datetime',
+    ];
+
     public function membership()
     {
         return $this->belongsTo(Membership::class, 'membershipID', 'membershipID');

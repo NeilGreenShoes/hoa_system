@@ -76,6 +76,36 @@ Breadcrumbs::for('admin.ownership.index', function (BreadcrumbTrail $trail) {
     $trail->push('Ownership Transfers', route('admin.ownership.index'));
 });
 
+// Home > Complaint Management
+Breadcrumbs::for('admin.complaint.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Complaint Management', route('admin.complaint.index'));
+});
+
+// Home > Maintenance Management
+Breadcrumbs::for('admin.maintenance.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Maintenance Management', route('admin.maintenance.index'));
+});
+
+// Home > Water Reading
+Breadcrumbs::for('admin.water_reading.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Water Reading', route('admin.water_reading.index'));
+});
+
+// Home > Billing
+Breadcrumbs::for('admin.billing.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Billing', route('admin.billing.index'));
+});
+
+// Home > Billing > Create
+Breadcrumbs::for('admin.billing.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.billing.index');
+    $trail->push('Create', route('admin.billing.create'));
+});
+
 // Home > App Configuration
 Breadcrumbs::for('admin.app_config.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');

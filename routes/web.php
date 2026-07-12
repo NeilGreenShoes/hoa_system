@@ -6,9 +6,13 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AppConfigController;
+use App\Http\Controllers\BillingController;
+use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\HomeownerController;
+use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\OwnershipTransfersController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\WaterReadingController;
 
 Route::get('/', function () {
     return view('index');
@@ -51,6 +55,18 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('admin/homeowner/show/{id}', [HomeownerController::class, 'show'])->name('admin.homeowner.show');
 
     Route::get('admin/ownership/index', [OwnershipTransfersController::class, 'index'])->name('admin.ownership.index');
+    
+    Route::get('admin/complaint/index', [ComplaintController::class, 'index'])->name('admin.complaint.index');
+    Route::patch('admin/complaint/update/{id}', [ComplaintController::class, 'update'])->name('admin.complaint.update');
+    
+    Route::get('admin/maintenance/index', [MaintenanceController::class, 'index'])->name('admin.maintenance.index');
+    Route::patch('admin/maintenance/update/{id}', [MaintenanceController::class, 'update'])->name('admin.maintenance.update');
+
+    Route::get('admin/water_reading/index', [WaterReadingController::class, 'index'])->name('admin.water_reading.index');
+
+    Route::get('admin/billing/index', [BillingController::class, 'index'])->name('admin.billing.index');
+    Route::get('admin/billing/create', [BillingController::class, 'create'])->name('admin.billing.create');
+    Route::post('admin/billing/billing', [BillingController::class, 'store'])->name('admin.billing.store');
 
     Route::get('admin/app_config', [AppConfigController::class, 'index'])->name('admin.app_config.index');
     Route::get('admin/app_config/edit', [AppConfigController::class, 'edit'])->name('admin.app_config.edit');

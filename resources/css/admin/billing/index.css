@@ -1,0 +1,59 @@
+.kanban{
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 8px;
+}
+
+.kanban-card{
+    height: 70px;
+    border: solid 1px #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.kanban-card h2{
+    font-size: 14px;
+}
+
+.kanban-card p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.status-cell {
+    min-width:70px;
+    padding: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: capitalize;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.status-overdue {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+.status-pending {
+    background-color: #fff7ed;
+    color: #c2410c;
+    border: 1px solid #ffedd5;
+}
+
+.status-partiallypaid {
+    background-color: #f0fdf4;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+}
+
+.status-paid {
+    background-color: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
