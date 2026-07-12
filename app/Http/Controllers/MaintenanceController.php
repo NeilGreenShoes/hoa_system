@@ -28,6 +28,6 @@ class MaintenanceController extends Controller
 
             return redirect()->back()->with('success', 'Maintenance Request has been successfully Completed');
         }
-        return redirect()->back()->with('error', 'Complaint cannot be updated further.');
+        return redirect()->back()->with('error', 'Maintenance Request cannot be updated further.');
     }
 }

@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="{{ asset('resources/css/admin/maintenance/index.css')}}?v={{ filemtime(resource_path('css/admin/maintenance/index.css')) }}">
 <x-admin>
-    <x-view-header title="Complaint Management">
+    <x-view-header title="Maintenance Requests">
 
     </x-view-header>
 
